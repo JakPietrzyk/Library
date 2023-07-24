@@ -12,8 +12,8 @@ namespace Rental.Controllers
     public class RentalController: ControllerBase
     {
         private readonly IRentalService _rentalService;
-        private readonly BooksClient _client;
-        public RentalController(IRentalService rentalService, BooksClient client)
+        private readonly IBooksClient _client;
+        public RentalController(IRentalService rentalService, IBooksClient client)
         {
             _rentalService = rentalService;
             _client = client;

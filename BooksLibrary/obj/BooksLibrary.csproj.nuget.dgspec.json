@@ -39,6 +39,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "AutoFixture": {
+              "target": "Package",
+              "version": "[4.18.0, )"
+            },
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[12.0.1, )"
@@ -57,9 +61,21 @@
               "target": "Package",
               "version": "[7.0.9, )"
             },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[7.0.9, )"
+            },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[7.0.9, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.6.3, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.18.4, )"
             },
             "NLog.Web.AspNetCore": {
               "target": "Package",
@@ -72,6 +88,16 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.5.0, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.5.0, )"
             }
           },
           "imports": [

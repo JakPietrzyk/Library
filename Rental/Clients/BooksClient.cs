@@ -4,8 +4,14 @@ using Rental.Exceptions;
 
 namespace Rental.Clients
 {
-    public class BooksClient
+    public interface IBooksClient
     {
+        Task<BookDto> GetBook(int id);
+    }
+    public class BooksClient: IBooksClient
+    {
+
+
         private readonly HttpClient _client;
         private readonly string _url = "http://localhost:5011/api/library";
 

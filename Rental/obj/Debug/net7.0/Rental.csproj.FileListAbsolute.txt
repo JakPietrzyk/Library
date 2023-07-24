@@ -108,3 +108,5 @@ C:\Users\Jakub\Documents\C#\1 task\Rental\bin\Debug\net7.0\Swashbuckle.AspNetCor
 C:\Users\Jakub\Documents\C#\1 task\Rental\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Jakub\Documents\C#\1 task\Rental\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Jakub\Documents\C#\1 task\Rental\obj\Debug\net7.0\Rental.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Jakub\Documents\C#\1 task\Rental\bin\Debug\net7.0\Castle.Core.dll
+C:\Users\Jakub\Documents\C#\1 task\Rental\bin\Debug\net7.0\Moq.dll

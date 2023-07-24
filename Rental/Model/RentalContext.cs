@@ -17,6 +17,7 @@ namespace Rental.Model
             modelBuilder.Entity<Customer>()
                 .Property(c => c.Surname)
                 .IsRequired();
+                
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -49,11 +49,11 @@ namespace BooksLibrary.Controllers
             return Created($"/api/library/{id}", null);
         }
         [HttpDelete("{id}")]
-        public ActionResult Delete([FromRoute] int id)
+        public async Task<ActionResult> Delete([FromRoute] int id)
         {
-            _libraryService.Delete(id);
-
-            return NoContent();
+            await _libraryService.Delete(id);
+            
+            return Ok();
         }
         [HttpPut("{id}")]
         public ActionResult Put([FromRoute]int id, [FromBody]UpdateBookDto dto)

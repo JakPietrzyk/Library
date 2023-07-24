@@ -9,6 +9,8 @@ namespace Rental.Mapper
         public RentalMappingProfile()
         {
             CreateMap<Customer,CustomerDto>();
+
+            CreateMap<CreateCustomerDto, Customer>();
         }
 
     }

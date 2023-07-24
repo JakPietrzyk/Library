@@ -4,11 +4,13 @@ namespace BooksLibrary.Dtos
 {
     public class CreateBookDto
     {
+        [Required]
+        public string Title { get; set; }
+        [Required]
 
-        public string Title { get; set; } = null!;
-
-        public string Author { get; set; } = null!;
+        public string Author { get; set; }
+        [Required]
         
-        public DateTime Releasedate { get; set; }
+        public DateTimeOffset   Releasedate { get; set; }
     }
 }

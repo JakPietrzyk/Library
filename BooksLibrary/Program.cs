@@ -22,6 +22,7 @@ builder.Services.AddScoped<ErrorHandlingMiddleware>();
 builder.Services.AddScoped<RequestTimeMiddleware>();
 
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpClient();
 
 
 builder.Configuration.GetConnectionString ("DefaultConnection");

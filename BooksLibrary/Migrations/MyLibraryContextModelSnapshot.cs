@@ -20,13 +20,16 @@ namespace BooksLibrary.Migrations
                 .HasAnnotation("ProductVersion", "7.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+            NpgsqlModelBuilderExtensions.UseSerialColumns(modelBuilder);
 
             modelBuilder.Entity("BooksLibrary.Model.Book", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Author")
                         .IsRequired()
@@ -34,8 +37,8 @@ namespace BooksLibrary.Migrations
                         .HasColumnType("character varying(255)")
                         .HasColumnName("author");
 
-                    b.Property<DateOnly>("Releasedate")
-                        .HasColumnType("date")
+                    b.Property<DateTime>("Releasedate")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("releasedate");
 
                     b.Property<string>("Title")

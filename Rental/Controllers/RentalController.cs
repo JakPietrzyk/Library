@@ -1,6 +1,7 @@
 using Rental.Model;
 using Rental.Services;
 using Rental.Dtos;
+using Rental.Clients;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -11,61 +12,49 @@ namespace Rental.Controllers
     public class RentalController: ControllerBase
     {
         private readonly IRentalService _rentalService;
-        public RentalController(IRentalService rentalService)
+        private readonly BooksClient _client;
+        public RentalController(IRentalService rentalService, BooksClient client)
         {
             _rentalService = rentalService;
+            _client = client;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Customer>> GetAll()
+        public ActionResult<IEnumerable<CustomerDto>> GetAll([FromQuery]DateTime? from = null, [FromQuery]DateTime? to = null)
         {
-            var customers = _rentalService.GetAll();
+            var customers = _rentalService.GetAll(from,to);
 
             return Ok(customers);
         }
 
+        [HttpGet("{id}")]
+        public ActionResult GetRent([FromRoute]int id )
+        {
+            _rentalService.CheckRent(id);
+            return Ok();
+        }
+
         [HttpPost("new")]
-        public ActionResult CreateCustomer([FromBody] Customer dto)
+        public ActionResult CreateCustomer([FromBody] CreateCustomerDto dto)
         {
             var id = _rentalService.Create(dto);
 
             return Created($"/api/rental/{id}", null);
         } 
-        [HttpPost("rent/{title}")]
-        public async Task<ActionResult<CustomerDto>> RentBook([FromRoute]string title, [FromBody]Customer dto)
+        [HttpPost("rent/{id}")]
+        public async Task<ActionResult<CustomerDto>> RentBook([FromRoute]int id, [FromBody]CreateCustomerDto dto)
         {
-            HttpClient client = new(){BaseAddress = new Uri("http://localhost:5011")};
-            HttpResponseMessage response = await client.GetAsync($"/api/library/book/{title}");
+            var book = await _client.GetBook(id);
+            var CustomerId = _rentalService.Rent(dto, book);
 
-            if(response.IsSuccessStatusCode)
-            {
-                string jsonString = await response.Content.ReadAsStringAsync();
-                BookDto result = JsonConvert.DeserializeObject<BookDto>(jsonString);
+            return Created($"/api/rental/{CustomerId}" ,null);
+        }
+        [HttpDelete("rent/{id}")]
+        public ActionResult DeleteRent([FromRoute]int id)
+        {
+            _rentalService.Delete(id);
 
-                
-
-                if(result is not null) 
-                {
-                    dto.book_id = result.Id;
-                    dto.Rental_date = DateTime.Today;
-
-                    _rentalService.Create(dto);
-
-
-                    return Ok(new CustomerDto()
-                    {
-                        Name = dto.Name,
-                        Surname = dto.Surname,
-                        Rental_date = dto.Rental_date,
-                        Title = result.Title,
-                        Author = result.Author,
-                        Releasedate = result.Releasedate
-                    });
-                }
-            }
-
-            return BadRequest();
-            
+            return NoContent();
         }
     }
 }

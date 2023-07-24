@@ -11,10 +11,10 @@ public partial class Book
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
     public int Id { get; set; }
-
+    [Required]
     public string Title { get; set; } = null!;
-
+    [Required]
     public string Author { get; set; } = null!;
-
-    public DateTime Releasedate { get; set; }
+    [Required]
+    public DateTimeOffset  Releasedate { get; set; }
 }

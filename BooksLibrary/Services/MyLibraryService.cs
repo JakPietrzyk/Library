@@ -12,7 +12,7 @@ namespace BooksLibrary.Services
         BookDto GetByTitle(string title);
         IEnumerable<BookDto> GetAll();
         int Create(CreateBookDto dto);
-        void Delete(int id);
+        Task<bool> Delete(int id);
         void Update(int id, UpdateBookDto dto);
     }
 
@@ -21,11 +21,15 @@ namespace BooksLibrary.Services
         private readonly MyLibraryContext _context;
         private readonly IMapper _mapper;
         private readonly ILogger<MyLibraryService> _logger;
-        public MyLibraryService(MyLibraryContext context, IMapper mapper, ILogger<MyLibraryService> logger)
+        private readonly HttpClient _httpClient;
+        private readonly string _url;
+        public MyLibraryService(MyLibraryContext context, IMapper mapper, ILogger<MyLibraryService> logger, HttpClient httpClient)
         {
             _logger = logger;
             _context = context;
             _mapper = mapper;
+            _httpClient = httpClient;
+            _url = "http://localhost:5024/api/rental/";
         }
 
         public BookDto GetById(int id)
@@ -65,15 +69,23 @@ namespace BooksLibrary.Services
             return book.Id;
         }
 
-        public void Delete(int id)
+        public async Task<bool> Delete(int id)
         {
             _logger.LogError($"Book with id: {id} DELETE action invoked");
             var book = _context.Books.FirstOrDefault(b => b.Id == id);
-
             if(book is null) throw new NotFoundException("Book not found");
+            
+            HttpResponseMessage response = await _httpClient.GetAsync($"{_url}{book.Id}");
+            
 
-            _context.Books.Remove(book);
-            _context.SaveChanges();
+
+            if(response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                _context.Books.Remove(book);
+                _context.SaveChanges();
+                return true;
+            }
+            throw new NotFoundException("Book is rented");
         }
 
         public void Update(int id, UpdateBookDto dto)

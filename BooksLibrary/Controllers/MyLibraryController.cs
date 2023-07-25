@@ -4,12 +4,13 @@ using BooksLibrary.Services;
 using System;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
-
+using BooksLibrary.Middleware;
 
 namespace BooksLibrary.Controllers
 {
 
     [Route("api/library")]
+    [ServiceFilter(typeof(LoggerFilterAttribbute))]
     [ApiController]
     public class MyLibraryController: ControllerBase
     {
@@ -19,22 +20,22 @@ namespace BooksLibrary.Controllers
             _libraryService = libraryService;
         }
         [HttpGet]
-        public ActionResult<IEnumerable<BookDto>> GetAll()
+        public async Task<ActionResult<IEnumerable<BookDto>>> GetAll()
         {
-            var booksDtos = _libraryService.GetAll();
+            var booksDtos = await _libraryService.GetAll();
             
             return Ok(booksDtos);
         }
 
         [HttpGet("{id}")]
-        public ActionResult<BookDto> Get([FromRoute] int id)
+        public async Task<ActionResult<BookDto>> Get([FromRoute] int id)
         {
-            var book = _libraryService.GetById(id);
+            var book = await _libraryService.GetById(id);
 
             return Ok(book);
         }
         [HttpGet("book/{title}")]
-        public ActionResult<BookDto>Get([FromRoute]string title)
+        public ActionResult<BookDto> Get([FromRoute]string title)
         {
             var book = _libraryService.GetByTitle(title);
 
@@ -42,9 +43,9 @@ namespace BooksLibrary.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateBook([FromBody] CreateBookDto dto)
+        public async Task<ActionResult> CreateBook([FromBody] CreateBookDto dto)
         {           
-            var id = _libraryService.Create(dto);
+            var id = await _libraryService.Create(dto);
 
             return Created($"/api/library/{id}", null);
         }
@@ -56,9 +57,9 @@ namespace BooksLibrary.Controllers
             return Ok();
         }
         [HttpPut("{id}")]
-        public ActionResult Put([FromRoute]int id, [FromBody]UpdateBookDto dto)
+        public async Task<ActionResult> Put([FromRoute]int id, [FromBody]UpdateBookDto dto)
         {
-            _libraryService.Update(id, dto);
+            await _libraryService.Update(id, dto);
 
             return Ok();
         }

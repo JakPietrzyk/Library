@@ -14,12 +14,12 @@ using Xunit;
 
 
 namespace BooksLibrary{
-    public class testclass
+    public class Testclass
     {
         private readonly Fixture _fixture;
         private MyLibraryController? _controller; 
         private Mock<ILibraryService> _libraryService;
-        public testclass()
+        public Testclass()
         {
             _fixture = new Fixture();
             _libraryService = new Mock<ILibraryService>();
@@ -29,11 +29,11 @@ namespace BooksLibrary{
         {
             var booksList = _fixture.CreateMany<BookDto>(3).ToList();
 
-            _libraryService.Setup(c => c.GetAll()).Returns(booksList);
+            _libraryService.Setup(c => c.GetAll()).Returns(Task.FromResult<IEnumerable<BookDto>>(booksList));
 
             _controller = new MyLibraryController(_libraryService.Object);
 
-            var result = _controller.GetAll();
+            var result = await _controller.GetAll();
             
             Assert.NotNull(result);
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
@@ -46,11 +46,11 @@ namespace BooksLibrary{
             _fixture.Customize<BookDto>(c => c.With(b => b.Id, bookId));
             var book = _fixture.Create<BookDto>();
 
-            _libraryService.Setup(c => c.GetById(bookId)).Returns(book);
+            _libraryService.Setup(c => c.GetById(bookId)).Returns(Task.FromResult(book));
 
             _controller = new MyLibraryController(_libraryService.Object);
 
-            var result = _controller.Get(bookId);
+            var result = await _controller.Get(bookId);
 
             Assert.NotNull(result);
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
@@ -62,11 +62,11 @@ namespace BooksLibrary{
             var createBookDto = _fixture.Create<CreateBookDto>();
             int createdId = new();
 
-            _libraryService.Setup(c => c.Create(It.IsAny<CreateBookDto>())).Returns(createdId);
+            _libraryService.Setup(c => c.Create(It.IsAny<CreateBookDto>())).Returns(Task.FromResult(createdId));
 
             _controller = new MyLibraryController(_libraryService.Object);
 
-            var result = _controller.CreateBook(createBookDto);
+            var result = await _controller.CreateBook(createBookDto);
             
             Assert.NotNull(result);
             var createResult = Assert.IsType<CreatedResult>(result);
@@ -76,14 +76,13 @@ namespace BooksLibrary{
         public async Task Put_BookDto_ReturnOk()
         {
             var bookId = 3;
-            // _fixture.Customize<UpdateBookDto>(c => c.With(b => b.Id, bookId));
             var book = _fixture.Create<UpdateBookDto>();
 
             _libraryService.Setup(c => c.Update(It.IsAny<int>(), It.IsAny<UpdateBookDto>()));
 
             _controller = new MyLibraryController(_libraryService.Object);
 
-            var result = _controller.Put(bookId, book);
+            var result = await _controller.Put(bookId, book);
             
             Assert.NotNull(result);
             var okResult = Assert.IsType<OkResult>(result);
@@ -95,7 +94,6 @@ namespace BooksLibrary{
         public async Task Delete_ValidId_ReturnsTrue()
         {
             var bookId = 3;
-            // _fixture.Customize<UpdateBookDto>(c => c.With(b => b.Id, bookId));
             var book = _fixture.Create<UpdateBookDto>();
 
             _libraryService.Setup(c => c.Delete(bookId));
@@ -127,15 +125,15 @@ namespace BooksLibrary{
                 var configuration = new MapperConfiguration(c => c.AddProfile(myProfile));
                 IMapper mapper = new Mapper(configuration);
 
-                var service = new MyLibraryService(dbContext, mapper, null, null);
+                var service = new MyLibraryService(dbContext, mapper, loggerMock.Object, httpClientMock.Object);
 
-                service.Create(book);
+                await service.Create(book);
 
                 Assert.Equal(1, dbContext.Books.Count());
             }
         }
         [Fact]
-        public void Update_ExistingBook_ReturnsOk()
+        public async void Update_ExistingBook_ReturnsOk()
         {
             var id = _fixture.Create<int>(); 
             var updatedBookDto = new UpdateBookDto
@@ -169,7 +167,7 @@ namespace BooksLibrary{
 
                 var service = new MyLibraryService(dbContext, mapper, loggerMock.Object, httpClientMock.Object);
 
-                service.Update(id, updatedBookDto);
+                await service.Update(id, updatedBookDto);
 
                 var updatedBook = dbContext.Books.FirstOrDefault(b => b.Id == id);
                 Assert.NotNull(updatedBook);
@@ -244,7 +242,8 @@ namespace BooksLibrary{
             };
 
             var loggerMock = new Mock<ILogger<MyLibraryService>>();
-            var myLibraryService = new MyLibraryService(dbContext, null, loggerMock.Object, httpClient);
+            var mapperMock = new Mock<IMapper>();
+            var myLibraryService = new MyLibraryService(dbContext, mapperMock.Object, loggerMock.Object, httpClient);
 
             var result = await myLibraryService.Delete(id);
 

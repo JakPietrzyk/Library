@@ -22,6 +22,11 @@ namespace BooksLibrary.Middleware
                 context.Response.StatusCode = 404;
                 await context.Response.WriteAsync(notFoundException.Message);
             }
+            catch(BadHttpRequestException badRequestException)
+            {
+                context.Response.StatusCode = 400;
+                await context.Response.WriteAsync(badRequestException.Message);
+            }
             // catch(Exception e)
             // {
             //     _logger.LogError(e, e.Message);

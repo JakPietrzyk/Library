@@ -20,14 +20,17 @@ builder.Services.AddAutoMapper(typeof(BookMappingProfile).Assembly);
 builder.Services.AddScoped<ILibraryService, MyLibraryService>();
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
 builder.Services.AddScoped<RequestTimeMiddleware>();
+builder.Services.AddScoped<LoggerFilterAttribbute>();
 
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
 
+builder.Services.AddMvc(o => o.Filters.Add<LoggerFilterAttribbute>());
 
 builder.Configuration.GetConnectionString ("DefaultConnection");
 
 builder.Logging.ClearProviders();
+builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
 builder.Host.UseNLog();
 
 var app = builder.Build();
@@ -37,6 +40,7 @@ app.UseMiddleware<ErrorHandlingMiddleware>();
 app.UseMiddleware<RequestTimeMiddleware>();
 
 app.UseHttpsRedirection();
+app.UseHttpLogging();
 
 app.UseSwagger();
 app.UseSwaggerUI(c=>{

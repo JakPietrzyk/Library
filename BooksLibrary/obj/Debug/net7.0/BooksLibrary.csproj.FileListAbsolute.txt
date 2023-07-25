@@ -12,12 +12,6 @@ C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\AutoMapper.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Castle.Core.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Humanizer.dll
-C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
-C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
-C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Microsoft.AspNetCore.Razor.Language.dll
-C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Microsoft.CodeAnalysis.dll
-C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Microsoft.CodeAnalysis.Razor.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Microsoft.VisualStudio.CodeCoverage.Shim.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Microsoft.Data.Sqlite.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
@@ -37,7 +31,6 @@ C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Microsoft.Visua
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Moq.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Newtonsoft.Json.dll
-C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\NLog.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\NLog.Extensions.Logging.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\NLog.Web.AspNetCore.dll
@@ -51,7 +44,6 @@ C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Swashbuckle.Asp
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\System.CodeDom.dll
-C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\System.Security.Permissions.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\xunit.abstractions.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\xunit.assert.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\xunit.core.dll
@@ -151,8 +143,6 @@ C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\obj\Debug\net7.0\BooksLibrary.As
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\obj\Debug\net7.0\BooksLibrary.csproj.CoreCompileInputs.cache
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\obj\Debug\net7.0\BooksLibrary.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\obj\Debug\net7.0\BooksLibrary.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\obj\Debug\net7.0\BooksLibrary.RazorAssemblyInfo.cache
-C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\obj\Debug\net7.0\BooksLibrary.RazorAssemblyInfo.cs
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\obj\Debug\net7.0\BooksLibrary.csproj.CopyComplete
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\obj\Debug\net7.0\BooksLibrary.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\obj\Debug\net7.0\refint\BooksLibrary.dll
@@ -165,3 +155,11 @@ C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\xunit.runner.ut
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\AutoFixture.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Fare.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\obj\Debug\net7.0\staticwebassets\msbuild.BooksLibrary.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\obj\Debug\net7.0\staticwebassets\msbuild.build.BooksLibrary.props
+C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.BooksLibrary.props
+C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.BooksLibrary.props
+C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\obj\Debug\net7.0\scopedcss\bundle\BooksLibrary.styles.css

@@ -7,9 +7,9 @@ namespace BooksLibrary.Dtos
 
         public int Id { get; set; }
         [Required]
-        public string Title { get; set; }
+        public string? Title { get; set; }
         [Required]
-        public string Author { get; set; }
+        public string? Author { get; set; }
         [Required]
         public DateTimeOffset   Releasedate { get; set; }
     }

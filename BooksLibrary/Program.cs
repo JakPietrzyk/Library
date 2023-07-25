@@ -1,5 +1,5 @@
 using BooksLibrary.Model;
-using BooksLibrary.Mapper;
+using BooksLibrary.Mappers;
 using BooksLibrary.Services;
 using BooksLibrary.Middleware;
 using Microsoft.EntityFrameworkCore;

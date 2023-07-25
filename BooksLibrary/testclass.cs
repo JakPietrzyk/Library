@@ -1,12 +1,15 @@
+using System.Net;
 using AutoFixture;
 using AutoMapper;
 using BooksLibrary.Controllers;
 using BooksLibrary.Dtos;
+using BooksLibrary.Mappers;
 using BooksLibrary.Model;
 using BooksLibrary.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Moq;
+using Moq.Protected;
 using Xunit;
 
 
@@ -109,22 +112,146 @@ namespace BooksLibrary{
         [Fact]
         public async Task Create_BookDto_ReturnOk()
         {
-            // var bookId = 1;
-            // var book = _fixture.Create<CreateBookDto>();
+            var book = _fixture.Create<CreateBookDto>();
 
-            // var dbContextOptions = new DbContextOptionsBuilder<MyLibraryContext>()
-            //     .UseInMemoryDatabase(databaseName: "TestBooks").Options;
+            var dbContextOptions = new DbContextOptionsBuilder<MyLibraryContext>()
+                .UseInMemoryDatabase(databaseName: "TestBooksCreate")
+                .Options;
 
-            // var dbContext = new MyLibraryContext(dbContextOptions);
-            // var httpClientMock = new Mock<HttpClient>();
-            // var loggerMock = new Mock<ILogger<MyLibraryService>>();
-            // var mapper = new Mock<IMapper>();
-            // var service = new MyLibraryService(dbContext, mapper.Object, loggerMock.Object, httpClientMock.Object);
+            using(var dbContext = new MyLibraryContext(dbContextOptions))
+            {
+                var httpClientMock = new Mock<HttpClient>();
+                var loggerMock = new Mock<ILogger<MyLibraryService>>();
 
-            // service.Create(book);
+                var myProfile = new BookMappingProfile();
+                var configuration = new MapperConfiguration(c => c.AddProfile(myProfile));
+                IMapper mapper = new Mapper(configuration);
 
-            // Assert.Equal(1, dbContext.Books.Count());
+                var service = new MyLibraryService(dbContext, mapper, null, null);
+
+                service.Create(book);
+
+                Assert.Equal(1, dbContext.Books.Count());
+            }
+        }
+        [Fact]
+        public void Update_ExistingBook_ReturnsOk()
+        {
+            var id = _fixture.Create<int>(); 
+            var updatedBookDto = new UpdateBookDto
+            {
+                Title = "Updated Title",
+                Author = "Updated Author",
+                Releasedate = DateTime.UtcNow
+            };
+
+            var dbContextOptions = new DbContextOptionsBuilder<MyLibraryContext>()
+                .UseInMemoryDatabase(databaseName: "TestBooksUpdate")
+                .Options;
+
+            using (var dbContext = new MyLibraryContext(dbContextOptions))
+            {
+                var existingBook = new Book { 
+                    Id = id, 
+                    Title = "Old Title", 
+                    Author = "Old Author", 
+                    Releasedate = DateTime.UtcNow 
+                };
+                dbContext.Books.Add(existingBook);
+                dbContext.SaveChanges();
+
+                var httpClientMock = new Mock<HttpClient>();
+                var loggerMock = new Mock<ILogger<MyLibraryService>>();
+
+                var myProfile = new BookMappingProfile();
+                var configuration = new MapperConfiguration(c => c.AddProfile(myProfile));
+                IMapper mapper = new Mapper(configuration);
+
+                var service = new MyLibraryService(dbContext, mapper, loggerMock.Object, httpClientMock.Object);
+
+                service.Update(id, updatedBookDto);
+
+                var updatedBook = dbContext.Books.FirstOrDefault(b => b.Id == id);
+                Assert.NotNull(updatedBook);
+                Assert.Equal(updatedBookDto.Title, updatedBook.Title);
+                Assert.Equal(updatedBookDto.Author, updatedBook.Author);
+                Assert.Equal(updatedBookDto.Releasedate, updatedBook.Releasedate); 
+            }
+        }
+        [Fact]
+        public async void Delete_ExistingBook_ReturnsOk_HttpServiceRunning()
+        {
+            var id = _fixture.Create<int>(); 
+
+            var dbContextOptions = new DbContextOptionsBuilder<MyLibraryContext>()
+                .UseInMemoryDatabase(databaseName: "TestBooksDelete")
+                .Options;
+
+            using (var dbContext = new MyLibraryContext(dbContextOptions))
+            {
+                var existingBook = new Book { 
+                    Id = id, 
+                    Title = "Title", 
+                    Author = "Author", 
+                    Releasedate = DateTime.UtcNow 
+                };
+                dbContext.Books.Add(existingBook);
+                dbContext.SaveChanges();
+
+                var httpClientMock = new Mock<HttpClient>();
+                var loggerMock = new Mock<ILogger<MyLibraryService>>();
+
+                var myProfile = new BookMappingProfile();
+                var configuration = new MapperConfiguration(c => c.AddProfile(myProfile));
+                IMapper mapper = new Mapper(configuration);
+                HttpClient client = new HttpClient();
+                var service = new MyLibraryService(dbContext, mapper, loggerMock.Object, client);
+
+                await service.Delete(id);
+
+                var deletedBook = dbContext.Books.FirstOrDefault(b => b.Id == id);
+                Assert.Null(deletedBook);
+            }
+        }
+        [Fact]
+        public async Task Delete_ExistingBook_ReturnsTrue()
+        {
+            var id = _fixture.Create<int>(); 
+
+            var dbContextOptions = new DbContextOptionsBuilder<MyLibraryContext>()
+                .UseInMemoryDatabase(databaseName: "TestBooksDelete2")
+                .Options;
+
+            var dbContext = new MyLibraryContext(dbContextOptions);
+            
+            var existingBook = new Book { Id = id, Title = "Existing Title", Author = "Existing Author", Releasedate = DateTime.UtcNow };
+            dbContext.Books.Add(existingBook);
+            dbContext.SaveChanges();
+        
+            var httpClientHandlerMock = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+            httpClientHandlerMock
+                .Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>()
+                )
+                .ReturnsAsync(new HttpResponseMessage(HttpStatusCode.NotFound));
+
+            var httpClient = new HttpClient(httpClientHandlerMock.Object)
+            {
+                BaseAddress = new Uri("http://example.com") 
+            };
+
+            var loggerMock = new Mock<ILogger<MyLibraryService>>();
+            var myLibraryService = new MyLibraryService(dbContext, null, loggerMock.Object, httpClient);
+
+            var result = await myLibraryService.Delete(id);
+
+            Assert.True(result);
         }
     }
 }
+
+
 

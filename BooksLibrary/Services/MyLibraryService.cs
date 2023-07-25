@@ -1,6 +1,6 @@
 using BooksLibrary.Model;
 using BooksLibrary.Dtos;
-using BooksLibrary.Mapper;
+using BooksLibrary.Mappers;
 using BooksLibrary.Exceptions;
 using AutoMapper;
 

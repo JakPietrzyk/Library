@@ -9360,11 +9360,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Jakub\\Documents\\C#\\1 task\\Rental\\Rental.csproj",
+      "projectUniqueName": "C:\\Users\\Jakub\\Documents\\C#\\1 task\\Rental\\Rental.csproj",
       "projectName": "Rental",
-      "projectPath": "c:\\Users\\Jakub\\Documents\\C#\\1 task\\Rental\\Rental.csproj",
+      "projectPath": "C:\\Users\\Jakub\\Documents\\C#\\1 task\\Rental\\Rental.csproj",
       "packagesPath": "C:\\Users\\Jakub\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Jakub\\Documents\\C#\\1 task\\Rental\\obj\\",
+      "outputPath": "C:\\Users\\Jakub\\Documents\\C#\\1 task\\Rental\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Jakub\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -9373,6 +9373,7 @@
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

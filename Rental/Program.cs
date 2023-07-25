@@ -14,6 +14,7 @@ builder.Services.AddDbContext<RentalContext>();
 builder.Services.AddAutoMapper(typeof(RentalMappingProfile).Assembly);
 
 builder.Services.AddScoped<IRentalService, RentalService>();
+builder.Services.AddScoped<IBooksClient, BooksClient>();
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
 builder.Services.AddScoped<RequestTimeMiddleware>();
 builder.Services.AddSwaggerGen();

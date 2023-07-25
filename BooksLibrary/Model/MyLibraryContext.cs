@@ -19,7 +19,10 @@ public partial class MyLibraryContext : DbContext
     public virtual DbSet<Book> Books { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseNpgsql("Include Error Detail=true;Host=localhost;Database=MyLibrary;Username=postgres;Password=@lampa12");
+    {
+        if(!optionsBuilder.IsConfigured)
+            optionsBuilder.UseNpgsql("Include Error Detail=true;Host=localhost;Database=MyLibrary;Username=postgres;Password=@lampa12");
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

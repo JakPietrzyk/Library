@@ -3,7 +3,7 @@ using AutoMapper;
 using BooksLibrary.Model;
 using BooksLibrary.Dtos;
 
-namespace BooksLibrary.Mapper
+namespace BooksLibrary.Mappers
 {
     public class BookMappingProfile: Profile
     {

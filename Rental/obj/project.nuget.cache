@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6zGxtd0xJH3rAQjBykXkFEVW7MySwYEiA6e9fLIt+m5DA/645Qu8mChrdLwQ/QyeWtXF0yIHfsiXj67h3uWeQA==",
+  "dgSpecHash": "YxEqi/5aQQizOWDcqE8epOkKFLm/17a5iuq3pyv6/rbijg/yA+bJOOZ1aBXJ09xATvOqxpDa7udzOqndtbSC8w==",
   "success": true,
-  "projectFilePath": "c:\\Users\\Jakub\\Documents\\C#\\1 task\\Rental\\Rental.csproj",
+  "projectFilePath": "C:\\Users\\Jakub\\Documents\\C#\\1 task\\Rental\\Rental.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jakub\\.nuget\\packages\\autofixture\\4.18.0\\autofixture.4.18.0.nupkg.sha512",
     "C:\\Users\\Jakub\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",

@@ -2,7 +2,7 @@ using AutoMapper;
 using Rental.Model;
 using Rental.Dtos;
 
-namespace Rental.Mapper
+namespace Rental.Mappers
 {
     public class RentalMappingProfile: Profile
     {

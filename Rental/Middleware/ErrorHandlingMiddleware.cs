@@ -19,8 +19,15 @@ namespace Rental.Middleware
             }
             catch(NotFoundException notFoundException)
             {
+                _logger.LogError(notFoundException, notFoundException.Message);
                 context.Response.StatusCode = 404;
                 await context.Response.WriteAsync(notFoundException.Message);
+            }
+            catch(BadHttpRequestException badRequestException)
+            {
+                _logger.LogError(badRequestException,badRequestException.Message);
+                context.Response.StatusCode = 400;
+                await context.Response.WriteAsync(badRequestException.Message);
             }
             // catch(Exception e)
             // {

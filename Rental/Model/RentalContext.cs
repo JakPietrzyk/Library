@@ -22,7 +22,8 @@ namespace Rental.Model
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(_connectionString);
+            if(!optionsBuilder.IsConfigured)
+                optionsBuilder.UseSqlite(_connectionString);
         }
     }
 }

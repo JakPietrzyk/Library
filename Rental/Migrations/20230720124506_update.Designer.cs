@@ -12,7 +12,7 @@ namespace Rental.Migrations
 {
     [DbContext(typeof(RentalContext))]
     [Migration("20230720124506_update")]
-    partial class update
+    partial class Update
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

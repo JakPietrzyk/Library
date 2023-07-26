@@ -18,6 +18,7 @@ builder.Services.AddDbContext<MyLibraryContext>();
 builder.Services.AddAutoMapper(typeof(BookMappingProfile).Assembly);
 
 builder.Services.AddScoped<ILibraryService, MyLibraryService>();
+
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
 builder.Services.AddScoped<RequestTimeMiddleware>();
 builder.Services.AddScoped<LoggerFilterAttribbute>();

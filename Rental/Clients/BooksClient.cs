@@ -23,13 +23,21 @@ namespace Rental.Clients
 
         public async Task<BookDto> GetBook(int id)
         {
-            HttpResponseMessage response = await _client.GetAsync($"{_url}/{id}");
+            HttpResponseMessage response = new();
+            try
+            {
+                response = await _client.GetAsync($"{_url}/{id}");
+            }
+            catch
+            {
+                throw new BadHttpRequestException("Can not connect to Library service");
+            }
 
 
             if(response.IsSuccessStatusCode)
             {
                 string jsonString = await response.Content.ReadAsStringAsync();
-                BookDto result = JsonConvert.DeserializeObject<BookDto>(jsonString);
+                BookDto? result = JsonConvert.DeserializeObject<BookDto>(jsonString);
                 if(result is not null) 
                 {
                     return result;

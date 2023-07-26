@@ -1,12 +1,41 @@
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
-
-# Local History for Visual Studio Code
-.history/
-
-# Built Visual Studio Code Extensions
+# .NET Core and Visual Studio Code specific
+.vscode/
+bin/
+obj/
+*.userprefs
+*.vs
+*.suo
+*.cache
+*.log
 *.vsix
+/.vscode/ipch
+/.vscode/launch.json
+/.vscode/settings.json
+/.vscode/tasks.json
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+
+# Packages directory
+packages/
+*.nupkg
+
+# NuGet Cache
+*.nuget.cache
+*.dll
+
+# .NET Core Symbol Packages
+*.pdb
+*.ide
+*.ipch
+
+# Visual Studio files
+*.opensdf
+*.sdf
+*.sln.docstates
+
+# Test Results
+TestResults/
+[Tt]est[Rr]esult*/
+*.testsettings

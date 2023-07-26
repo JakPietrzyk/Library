@@ -83,10 +83,17 @@ namespace BooksLibrary.Services
             _logger.LogInformation($"Book with id: {id} DELETE action invoked");
             var book = _context.Books.FirstOrDefault(b => b.Id == id);
             if(book is null) throw new NotFoundException("Book not found");
-            
-            HttpResponseMessage response = await _httpClient.GetAsync($"{_url}{book.Id}");
-            
 
+            HttpResponseMessage response;
+            try
+            {
+                response = await _httpClient.GetAsync($"{_url}{book.Id}");
+            }
+            catch
+            {
+                _logger.LogError($"Rental service is unavaliable!");
+                throw new BadHttpRequestException("Can not connect to Rental service");
+            }
 
             if(response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {

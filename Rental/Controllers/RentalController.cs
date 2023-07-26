@@ -4,10 +4,12 @@ using Rental.Dtos;
 using Rental.Clients;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Rental.Middleware;
 
 namespace Rental.Controllers
 {
     [Route("api/rental")]
+    [ServiceFilter(typeof(LoggerFilterAttribbute))]
     [ApiController]
     public class RentalController: ControllerBase
     {
@@ -20,9 +22,9 @@ namespace Rental.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<CustomerDto>> GetAll([FromQuery]DateTime? from = null, [FromQuery]DateTime? to = null)
+        public async Task<ActionResult<IEnumerable<CustomerDto>>> GetAll([FromQuery]DateTime? from = null, [FromQuery]DateTime? to = null)
         {
-            var customers = _rentalService.GetAll(from,to);
+            var customers = await _rentalService.GetAll(from,to);
 
             return Ok(customers);
         }
@@ -35,9 +37,9 @@ namespace Rental.Controllers
         }
 
         [HttpPost("new")]
-        public ActionResult CreateCustomer([FromBody] CreateCustomerDto dto)
+        public async Task<ActionResult> CreateCustomer([FromBody] CreateCustomerDto dto)
         {
-            var id = _rentalService.Create(dto);
+            var id = await _rentalService.Create(dto);
 
             return Created($"/api/rental/{id}", null);
         } 
@@ -45,14 +47,14 @@ namespace Rental.Controllers
         public async Task<ActionResult<CustomerDto>> RentBook([FromRoute]int id, [FromBody]CreateCustomerDto dto)
         {
             var book = await _client.GetBook(id);
-            var CustomerId = _rentalService.Rent(dto, book);
+            var CustomerId = await _rentalService.Rent(dto, book);
 
             return Created($"/api/rental/{CustomerId}" ,null);
         }
         [HttpDelete("rent/{id}")]
-        public ActionResult DeleteRent([FromRoute]int id)
+        public async Task<ActionResult> DeleteRent([FromRoute]int id)
         {
-            _rentalService.Delete(id);
+            await _rentalService.Delete(id);
 
             return NoContent();
         }

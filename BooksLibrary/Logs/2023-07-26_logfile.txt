@@ -109,3 +109,7 @@
 2023-07-26 10:22:36.5319||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 10 action executed 
 2023-07-26 10:22:36.5319||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/10, Response: 200, Duration: 18 ms 
 2023-07-26 10:22:36.5319||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/10, Response: 200, Duration: 18 ms 
+2023-07-26 16:13:06.6629||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/5 
+2023-07-26 16:13:06.6936||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/5 
+2023-07-26 16:13:06.6936||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 5 action invoked 
+2023-07-26 16:13:07.8111||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 5 action executed 

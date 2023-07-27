@@ -4,6 +4,9 @@ using Rental.Mappers;
 using AutoMapper;
 using Rental.Exceptions;
 using Microsoft.EntityFrameworkCore;
+using Confluent.Kafka;
+using Newtonsoft.Json;
+using Rental.Kafka;
 
 namespace Rental.Services
 {
@@ -28,6 +31,8 @@ namespace Rental.Services
             _mapper = mapper;
             _context = context;
             _logger = logger;
+            Uri uri = new Uri("http://localhost:9092");    
+            string topic = "rentalEvents";
         }
 
         public Customer CheckRent(int id)
@@ -55,6 +60,9 @@ namespace Rental.Services
 
             var result = _mapper.Map<List<CustomerDto>>(await customers.ToListAsync());
             _logger.LogInformation($"GET all Customers {from} {to} action executed");
+ 
+            string jsonString = JsonConvert.SerializeObject(_mapper.Map<List<CustomerKafkaGet>>(await customers.ToListAsync()), Formatting.Indented);
+            SendMessageToKafka(jsonString);
             return result;
         }
 
@@ -105,6 +113,39 @@ namespace Rental.Services
             _context.Customer.Remove(customer);
             await _context.SaveChangesAsync();
             _logger.LogInformation($"DELETE Customer with id: {id} executed");
+        }
+
+
+        public void SendMessageToKafka(string message)
+        {
+            var config = new ProducerConfig{
+                BootstrapServers = "localhost:9092"
+            };
+            var kafkaTopic = "rentalEvents";
+            using (var producer = new ProducerBuilder<Null, string>(config).Build())
+            {
+                try
+                {
+                    string messageValue = message;
+
+                    producer.Produce(kafkaTopic, new Message<Null, string> { Value = messageValue },
+                        deliveryReport =>
+                        {
+                            if (deliveryReport.Error.Code != ErrorCode.NoError)
+                            {
+                                Console.WriteLine($"Error: {deliveryReport.Error.Reason}");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Message sent: {deliveryReport.Message.Value}");
+                            }
+                        });
+                }
+                catch (ProduceException<Null, string> ex)
+                {
+                    Console.WriteLine($"Delivery failed: {ex.Error.Reason}");
+                }
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Rental.Clients
 {
     public interface IBooksClient
     {
-        Task<BookDto> GetBook(int id);
+        Task<Book> GetBook(int id);
     }
     public class BooksClient: IBooksClient
     {
@@ -21,7 +21,7 @@ namespace Rental.Clients
             
         }
 
-        public async Task<BookDto> GetBook(int id)
+        public async Task<Book> GetBook(int id)
         {
             HttpResponseMessage response = new();
             try
@@ -37,7 +37,7 @@ namespace Rental.Clients
             if(response.IsSuccessStatusCode)
             {
                 string jsonString = await response.Content.ReadAsStringAsync();
-                BookDto? result = JsonConvert.DeserializeObject<BookDto>(jsonString);
+                Book? result = JsonConvert.DeserializeObject<Book>(jsonString);
                 if(result is not null) 
                 {
                     return result;

@@ -51,8 +51,23 @@ namespace Rental.Controllers
 
             return Created($"/api/rental/{CustomerId}" ,null);
         }
+        [HttpPost("{customerId}/book/{bookId}")]
+        public async Task<ActionResult> AddRentToCustomer([FromRoute]int customerId, [FromRoute]int bookId)
+        {
+            var book = await _client.GetBook(bookId);
+            await _rentalService.Update(customerId, book);
+
+            return Created($"/api/rental/{customerId}" ,null);
+        }
         [HttpDelete("rent/{id}")]
         public async Task<ActionResult> DeleteRent([FromRoute]int id)
+        {
+            await _rentalService.DeleteRent(id);
+
+            return NoContent();
+        }
+        [HttpDelete("customer/{id}")]
+        public async Task<ActionResult> DeleteCustomer([FromRoute]int id)
         {
             await _rentalService.Delete(id);
 

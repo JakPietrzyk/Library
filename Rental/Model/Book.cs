@@ -1,10 +1,16 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Rental.Dtos
 {
-    public class RentedBook
+    public class Book
     {
-        public DateTimeOffset RentDate{get;set;}
+        [Required]
+        public int Id{get;set;}
+        [Required]
         public string? Title { get; set; }
+        [Required]
         public string? Author { get; set; }
+        [Required]
         public DateTimeOffset Releasedate { get; set; }
     }
 }

@@ -1,0 +1,54 @@
+2023-07-28 12:13:00.4937||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental 
+2023-07-28 12:13:00.5670||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental 
+2023-07-28 12:13:00.6837||INFO|Rental.Services.RentalService|GET all Customers   action invoked 
+2023-07-28 12:13:03.4854||INFO|Rental.Services.RentalService|GET all Customers   action executed 
+2023-07-28 12:13:04.2368||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental, Response: 200, Duration: 3669 ms 
+2023-07-28 12:13:04.2368||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental, Response: 200, Duration: 3746 ms 
+2023-07-28 12:13:36.1684||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental 
+2023-07-28 12:13:36.1684||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental 
+2023-07-28 12:13:36.1684||INFO|Rental.Services.RentalService|GET all Customers   action invoked 
+2023-07-28 12:13:36.2276||INFO|Rental.Services.RentalService|GET all Customers   action executed 
+2023-07-28 12:13:36.2779||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental, Response: 200, Duration: 108 ms 
+2023-07-28 12:13:36.2779||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental, Response: 200, Duration: 109 ms 
+2023-07-28 12:14:43.6632||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental 
+2023-07-28 12:14:43.6632||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental 
+2023-07-28 12:14:43.6632||INFO|Rental.Services.RentalService|GET all Customers   action invoked 
+2023-07-28 12:14:43.7693||INFO|Rental.Services.RentalService|GET all Customers   action executed 
+2023-07-28 12:14:43.7846||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental, Response: 200, Duration: 120 ms 
+2023-07-28 12:14:43.7846||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental, Response: 200, Duration: 121 ms 
+2023-07-28 12:14:51.5144||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental 
+2023-07-28 12:14:51.5144||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental 
+2023-07-28 12:14:51.5144||INFO|Rental.Services.RentalService|GET all Customers   action invoked 
+2023-07-28 12:14:51.5450||INFO|Rental.Services.RentalService|GET all Customers   action executed 
+2023-07-28 12:14:51.5748||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental, Response: 200, Duration: 59 ms 
+2023-07-28 12:14:51.5748||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental, Response: 200, Duration: 60 ms 
+2023-07-28 12:15:10.9810||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental 
+2023-07-28 12:15:10.9810||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental 
+2023-07-28 12:15:10.9810||INFO|Rental.Services.RentalService|GET all Customers   action invoked 
+2023-07-28 12:15:11.0097||INFO|Rental.Services.RentalService|GET all Customers   action executed 
+2023-07-28 12:15:11.0335||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental, Response: 200, Duration: 51 ms 
+2023-07-28 12:15:11.0335||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental, Response: 200, Duration: 52 ms 
+2023-07-28 12:15:21.4329||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental 
+2023-07-28 12:15:21.4329||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental 
+2023-07-28 12:15:21.4329||INFO|Rental.Services.RentalService|GET all Customers   action invoked 
+2023-07-28 12:15:21.4575||INFO|Rental.Services.RentalService|GET all Customers   action executed 
+2023-07-28 12:15:21.4900||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental, Response: 200, Duration: 56 ms 
+2023-07-28 12:15:21.4900||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental, Response: 200, Duration: 57 ms 
+2023-07-28 12:20:14.0918||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental 
+2023-07-28 12:20:14.0918||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental 
+2023-07-28 12:20:14.0918||INFO|Rental.Services.RentalService|GET all Customers   action invoked 
+2023-07-28 12:20:14.3072||INFO|Rental.Services.RentalService|GET all Customers   action executed 
+2023-07-28 12:20:14.3269||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental, Response: 200, Duration: 234 ms 
+2023-07-28 12:20:14.3269||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental, Response: 200, Duration: 235 ms 
+2023-07-28 12:20:17.9612||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental 
+2023-07-28 12:20:17.9612||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental 
+2023-07-28 12:20:17.9612||INFO|Rental.Services.RentalService|GET all Customers   action invoked 
+2023-07-28 12:20:17.9924||INFO|Rental.Services.RentalService|GET all Customers   action executed 
+2023-07-28 12:20:18.0131||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental, Response: 200, Duration: 51 ms 
+2023-07-28 12:20:18.0131||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental, Response: 200, Duration: 52 ms 
+2023-07-28 12:58:36.3900||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental 
+2023-07-28 12:58:36.3900||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental 
+2023-07-28 12:58:36.3900||INFO|Rental.Services.RentalService|GET all Customers   action invoked 
+2023-07-28 12:58:36.6289||INFO|Rental.Services.RentalService|GET all Customers   action executed 
+2023-07-28 12:58:36.6517||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental, Response: 200, Duration: 260 ms 
+2023-07-28 12:58:36.6517||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental, Response: 200, Duration: 262 ms 

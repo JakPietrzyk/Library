@@ -14,7 +14,7 @@ namespace Rental.Services
     public interface IRentalService
     {
         Task<IEnumerable<CustomerDto>> GetAll(DateTime? from, DateTime? to);
-        Task<int> Create(CreateCustomerDto dto);
+        Task<int> Create(Customer dto);
         bool CheckAvailability(int id);
         Task<int> Rent(CreateCustomerDto dto, Book book);
         Task Delete(int id);
@@ -86,17 +86,15 @@ namespace Rental.Services
             }
             
             _logger.LogInformation($"GET all Customers {from} {to} action executed");
- 
-            string jsonString = JsonConvert.SerializeObject(new CustomerKafkaGet(){customerDto = result}, Formatting.Indented);
-            SendMessageToKafka(jsonString);
+
             return result;
         }
 
-        public async Task<int> Create(CreateCustomerDto dto)
+        public async Task<int> Create(Customer customer)
         {
             _logger.LogInformation($"CREATE Customer action invoked");
 
-            var customer = _mapper.Map<Customer>(dto);
+            // var customer = _mapper.Map<Customer>(dto);
             _context.Customer.Add(customer);
             await _context.SaveChangesAsync();
 
@@ -119,13 +117,14 @@ namespace Rental.Services
             if(!CheckAvailability(book.Id)) throw new NotFoundException("Book is not avaliable");
             // var rentedBook = _mapper.Map<Boo>(book);
 
-            var rent = new RentDto{
+            var rent = new Rent{
                 RentDate = DateTimeOffset.UtcNow,
-                Book = _mapper.Map<BookDto>(book)
+                bookId = book.Id
             };
-            dto.Rents.Add(rent);
+            var customerToAdd = _mapper.Map<Customer>(dto);
+            customerToAdd.Rents.Add(rent);
             
-            var id = await Create(dto);
+            var id = await Create(customerToAdd);
             _logger.LogInformation($"CREATE Customer {dto.Surname} with rented book with id: {book.Id} invoked");
             return id;
         }
@@ -167,7 +166,13 @@ namespace Rental.Services
             customerToUpdate.Rents.Add(rentToAdd);
 
             await _context.SaveChangesAsync();
-            
+
+            var addToKafka = _mapper.Map<CustomerKafkaGet>(rentToAdd);
+            addToKafka.CusotmerId = rentToAdd.CustomerId;
+            addToKafka.RentId = rentToAdd.Id;
+            string jsonString = JsonConvert.SerializeObject(addToKafka, Formatting.Indented);
+            SendMessageToKafka(jsonString);
+
             _logger.LogInformation(($"UPDATE Customer with id: {customerId} invoked"));
         }
 
@@ -182,6 +187,7 @@ namespace Rental.Services
             {
                 try
                 {
+                    
                     string messageValue = message;
 
                     producer.Produce(kafkaTopic, new Message<Null, string> { Value = messageValue },
@@ -196,6 +202,7 @@ namespace Rental.Services
                                 Console.WriteLine($"Message sent: {deliveryReport.Message.Value}");
                             }
                         });
+                    producer.Flush(new TimeSpan(0,0,15));
                 }
                 catch (ProduceException<Null, string> ex)
                 {

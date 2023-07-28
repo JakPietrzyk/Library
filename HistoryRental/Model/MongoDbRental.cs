@@ -15,7 +15,7 @@ namespace HistoryRental.Model
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id {get;set;}
         public RentStatus rentStatus {get;set;} = RentStatus.Rented;
-        public List<CustomerDto>? customerDto {get;set;} = new List<CustomerDto>();
+        public int RentId{get;set;}
         // public int cusotmerId{get;set;}
         // public int bookId{get;set;} 
     }

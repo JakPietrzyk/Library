@@ -36,13 +36,13 @@ namespace Rental.Controllers
             return Ok();
         }
 
-        [HttpPost("new")]
-        public async Task<ActionResult> CreateCustomer([FromBody] CreateCustomerDto dto)
-        {
-            var id = await _rentalService.Create(dto);
+        // [HttpPost("new")]
+        // public async Task<ActionResult> CreateCustomer([FromBody] CreateCustomerDto dto)
+        // {
+        //     // var id = await _rentalService.Create(dto);
 
-            return Created($"/api/rental/{id}", null);
-        } 
+        //     // return Created($"/api/rental/{id}", null);
+        // } 
         [HttpPost("rent/{id}")]
         public async Task<ActionResult<CustomerDto>> RentBook([FromRoute]int id, [FromBody]CreateCustomerDto dto)
         {

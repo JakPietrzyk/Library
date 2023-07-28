@@ -47,6 +47,7 @@ namespace HistoryRental.Services
                         var message = consumer.Consume(stoppingToken);
                         var result = JsonConvert.DeserializeObject<KafkaRental>(message.Value);
 
+                        var sendToDatabase = _mapper.Map<MongoDbRental>(result);
                         await _rentalCollection.InsertOneAsync(_mapper.Map<MongoDbRental>(result), cancellationToken: stoppingToken);
                     }
                 }

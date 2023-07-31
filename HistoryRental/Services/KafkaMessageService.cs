@@ -46,7 +46,7 @@ namespace HistoryRental.Services
                     {
                         var message = consumer.Consume(stoppingToken);
                         var result = JsonConvert.DeserializeObject<KafkaRental>(message.Value);
-                        if(result is not null && result.Action == "DELETE")
+                        if(result is not null && result.ReturnDate is not null)
                         {
                             var filter = Builders<MongoDbRental>.Filter.Where(f => f.RentId == result.RentId);
                             var update = Builders<MongoDbRental>.Update.Set(r => r.returnDate, DateTime.Now);
@@ -68,3 +68,4 @@ namespace HistoryRental.Services
         }
     }
 }
+

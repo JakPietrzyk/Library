@@ -31,6 +31,8 @@ namespace BooksLibrary.Services
             _mapper = mapper;
             _httpClient = httpClient;
             _url = "http://localhost:5024/api/rental/";
+
+
         }
 
         public async Task<BookDto> GetById(int id)

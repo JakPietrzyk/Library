@@ -2,9 +2,10 @@ using Rental.Dtos;
 
 namespace Rental.Kafka
 {
-    public class CustomerKafkaDelete
+    public class CustomerKafka
     {
-        public string Action{get;set;} = "DELETE";
+        public DateTime RentDate{get;set;}
+        public DateTime? ReturnDate{get;set;} = null;
         public int CusotmerId{get;set;}
         public int BookId{get;set;} 
         public int RentId{get;set;}

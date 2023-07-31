@@ -17,8 +17,7 @@ namespace HistoryRental.Clients
 
         public BooksClient(HttpClient client)
         {
-            _client = client;
-            
+            _client = client;            
         }
 
         public async Task<Book> GetBook(int id)

@@ -43,7 +43,7 @@ namespace HistoryRental.Services
             }
             catch
             {
-                throw;
+                throw new NotFoundException("Customer not found");
             }
 
 
@@ -60,7 +60,15 @@ namespace HistoryRental.Services
              var listOfRents = new List<RentDto>();
                 foreach(var rent in resultFromDatabase)
                 {
-                    var book = await _booksClient.GetBook(rent.bookId);
+                    Book book;
+                    try
+                    {
+                        book = await _booksClient.GetBook(rent.bookId);
+                    }
+                    catch
+                    {
+                        throw new NotFoundException("Book not found");
+                    }
                     listOfRents.Add(new RentDto{
                                 ReturnDate = rent.returnDate,
                                 RentDate = rent.rentDate,

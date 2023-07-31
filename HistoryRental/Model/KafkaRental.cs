@@ -5,7 +5,8 @@ namespace HistoryRental.Model
 {
     public class KafkaRental
     {
-        public string? Action{get;set;}
+        public DateTime RentDate{get;set;}
+        public DateTime? ReturnDate{get;set;} = null;
         public int CusotmerId{get;set;}
         public int BookId{get;set;} 
         public int RentId{get;set;}

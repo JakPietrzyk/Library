@@ -39,6 +39,9 @@ namespace Rental.Controllers
         public async Task<ActionResult<CustomerDto>> GetCustomer([FromRoute]int id)
         {
             var customer = await _rentalService.GetCustomer(id);
+            var reuqestId = Guid.NewGuid();
+            // Response.Headers.Add("X-Request-ID", reuqestId.ToString());
+            HttpContext.Items.Add("X-Request-ID", reuqestId.ToString());
             return Ok(customer);
         }
 

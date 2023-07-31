@@ -158,9 +158,10 @@ namespace Rental.Services
             _context.Rent.Remove(rent);
             await _context.SaveChangesAsync();
 
-            var addToKafka = _mapper.Map<CustomerKafkaDelete>(rent);
+            var addToKafka = _mapper.Map<CustomerKafka>(rent);
             addToKafka.CusotmerId = rent.CustomerId;
             addToKafka.RentId = rent.Id;
+            addToKafka.ReturnDate = DateTime.Now;
             string jsonString = JsonConvert.SerializeObject(addToKafka, Formatting.Indented);
             SendMessageToKafka(jsonString);
 
@@ -183,7 +184,7 @@ namespace Rental.Services
 
             await _context.SaveChangesAsync();
 
-            var addToKafka = _mapper.Map<CustomerKafkaGet>(rentToAdd);
+            var addToKafka = _mapper.Map<CustomerKafka>(rentToAdd);
             addToKafka.CusotmerId = rentToAdd.CustomerId;
             addToKafka.RentId = rentToAdd.Id;
             string jsonString = JsonConvert.SerializeObject(addToKafka, Formatting.Indented);

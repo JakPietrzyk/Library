@@ -5,6 +5,13 @@ using Rental.Kafka;
 
 namespace Rental.Mappers
 {
+    public class DateTimeOffsetToDateTimeConverter : ITypeConverter<DateTimeOffset, DateTime>
+    {
+        public DateTime Convert(DateTimeOffset source, DateTime destination, ResolutionContext context)
+        {
+            return source.DateTime;
+        }
+    }
     public class RentalMappingProfile: Profile
     {
         public RentalMappingProfile()
@@ -21,16 +28,14 @@ namespace Rental.Mappers
             CreateMap<Book, BookDto>()
                 .ForMember(b=>b.Releasedate, opt => opt.MapFrom(src => src.Releasedate.DateTime.Date));
             // CreateMap<RentedBook, Book>();
-            CreateMap<CustomerDto, CustomerKafkaGet>();
+            CreateMap<CustomerDto, CustomerKafka>();
             CreateMap<CreateCustomerDto, Customer>();
             CreateMap<Customer, CustomerDto>();
             CreateMap<Rent, RentDto>();
             CreateMap<RentDto, Rent>();
-            CreateMap<Customer, CustomerKafkaGet>();
-            CreateMap<Rent,CustomerKafkaGet>();
-            CreateMap<Customer, CustomerKafkaDelete>();
-            CreateMap<Rent,CustomerKafkaDelete>();
-                // .ForMember(b => b.CusotmerId, opt => opt.MapFrom(src => CustomerId));
+            CreateMap<Customer, CustomerKafka>();
+            CreateMap<Rent,CustomerKafka>();
+            CreateMap<DateTimeOffset, DateTime>().ConvertUsing<DateTimeOffsetToDateTimeConverter>();
         }
 
     }

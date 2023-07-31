@@ -28,6 +28,8 @@ namespace Rental.Mappers
             CreateMap<RentDto, Rent>();
             CreateMap<Customer, CustomerKafkaGet>();
             CreateMap<Rent,CustomerKafkaGet>();
+            CreateMap<Customer, CustomerKafkaDelete>();
+            CreateMap<Rent,CustomerKafkaDelete>();
                 // .ForMember(b => b.CusotmerId, opt => opt.MapFrom(src => CustomerId));
         }
 

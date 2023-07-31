@@ -16,7 +16,7 @@ namespace HistoryRental.Model
         public string? Id {get;set;}
         public RentStatus rentStatus {get;set;} = RentStatus.Rented;
         public int RentId{get;set;}
-        // public int cusotmerId{get;set;}
-        // public int bookId{get;set;} 
+        public int cusotmerId{get;set;}
+        public int bookId{get;set;} 
     }
 }

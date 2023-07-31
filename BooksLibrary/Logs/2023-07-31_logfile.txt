@@ -1,0 +1,102 @@
+2023-07-31 08:35:48.3237||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/9 
+2023-07-31 08:35:48.3533||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/9 
+2023-07-31 08:35:48.3533||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 9 action invoked 
+2023-07-31 08:35:49.4211||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 9 action executed 
+2023-07-31 08:35:49.4250||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/9, Response: 200, Duration: 1071 ms 
+2023-07-31 08:35:49.4250||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/9, Response: 200, Duration: 1106 ms 
+2023-07-31 08:35:49.5432||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/5 
+2023-07-31 08:35:49.5432||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/5 
+2023-07-31 08:35:49.5432||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 5 action invoked 
+2023-07-31 08:35:49.5863||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 5 action executed 
+2023-07-31 08:35:49.5863||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/5, Response: 200, Duration: 43 ms 
+2023-07-31 08:35:49.5863||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/5, Response: 200, Duration: 43 ms 
+2023-07-31 08:35:49.5863||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/6 
+2023-07-31 08:35:49.5863||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/6 
+2023-07-31 08:35:49.5863||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 6 action invoked 
+2023-07-31 08:35:49.6022||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 6 action executed 
+2023-07-31 08:35:49.6022||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/6, Response: 200, Duration: 8 ms 
+2023-07-31 08:35:49.6022||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/6, Response: 200, Duration: 8 ms 
+2023-07-31 08:35:49.6022||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/16 
+2023-07-31 08:35:49.6022||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/16 
+2023-07-31 08:35:49.6022||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 16 action invoked 
+2023-07-31 08:35:49.6022||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 16 action executed 
+2023-07-31 08:35:49.6022||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/16, Response: 200, Duration: 1 ms 
+2023-07-31 08:35:49.6022||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/16, Response: 200, Duration: 2 ms 
+2023-07-31 08:35:49.6022||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/15 
+2023-07-31 08:35:49.6022||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/15 
+2023-07-31 08:35:49.6022||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 15 action invoked 
+2023-07-31 08:35:49.6022||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 15 action executed 
+2023-07-31 08:35:49.6022||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/15, Response: 200, Duration: 2 ms 
+2023-07-31 08:35:49.6022||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/15, Response: 200, Duration: 2 ms 
+2023-07-31 08:35:49.6022||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/14 
+2023-07-31 08:35:49.6022||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/14 
+2023-07-31 08:35:49.6022||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 14 action invoked 
+2023-07-31 08:35:49.6125||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 14 action executed 
+2023-07-31 08:35:49.6125||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/14, Response: 200, Duration: 1 ms 
+2023-07-31 08:35:49.6125||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/14, Response: 200, Duration: 1 ms 
+2023-07-31 08:42:34.6677||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/9 
+2023-07-31 08:42:34.6677||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/9 
+2023-07-31 08:42:34.6677||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 9 action invoked 
+2023-07-31 08:42:34.7449||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 9 action executed 
+2023-07-31 08:42:34.7449||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/9, Response: 200, Duration: 76 ms 
+2023-07-31 08:42:34.7449||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/9, Response: 200, Duration: 77 ms 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/5 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/5 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 5 action invoked 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 5 action executed 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/5, Response: 200, Duration: 2 ms 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/5, Response: 200, Duration: 2 ms 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/6 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/6 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 6 action invoked 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 6 action executed 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/6, Response: 200, Duration: 1 ms 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/6, Response: 200, Duration: 2 ms 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/16 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/16 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 16 action invoked 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 16 action executed 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/16, Response: 200, Duration: 2 ms 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/16, Response: 200, Duration: 2 ms 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/15 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/15 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 15 action invoked 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 15 action executed 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/15, Response: 200, Duration: 1 ms 
+2023-07-31 08:42:34.8178||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/15, Response: 200, Duration: 1 ms 
+2023-07-31 08:42:34.8316||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/14 
+2023-07-31 08:42:34.8316||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/14 
+2023-07-31 08:42:34.8316||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 14 action invoked 
+2023-07-31 08:42:34.8316||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 14 action executed 
+2023-07-31 08:42:34.8316||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/14, Response: 200, Duration: 1 ms 
+2023-07-31 08:42:34.8316||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/14, Response: 200, Duration: 1 ms 
+2023-07-31 08:43:57.9752||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/9 
+2023-07-31 08:43:57.9752||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/9 
+2023-07-31 08:43:57.9752||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 9 action invoked 
+2023-07-31 08:43:57.9752||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 9 action executed 
+2023-07-31 08:43:57.9752||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/9, Response: 200, Duration: 2 ms 
+2023-07-31 08:43:57.9752||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/9, Response: 200, Duration: 3 ms 
+2023-07-31 08:43:58.0041||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/5 
+2023-07-31 08:43:58.0041||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/5 
+2023-07-31 08:43:58.0041||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 5 action invoked 
+2023-07-31 08:43:58.0041||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 5 action executed 
+2023-07-31 08:43:58.0041||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/5, Response: 200, Duration: 1 ms 
+2023-07-31 08:43:58.0041||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/5, Response: 200, Duration: 1 ms 
+2023-07-31 08:43:58.0041||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/6 
+2023-07-31 08:43:58.0041||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/6 
+2023-07-31 08:43:58.0041||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 6 action invoked 
+2023-07-31 08:43:58.0041||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 6 action executed 
+2023-07-31 08:43:58.0041||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/6, Response: 200, Duration: 2 ms 
+2023-07-31 08:43:58.0041||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/6, Response: 200, Duration: 2 ms 
+2023-07-31 08:43:58.0041||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/16 
+2023-07-31 08:43:58.0041||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/16 
+2023-07-31 08:43:58.0041||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 16 action invoked 
+2023-07-31 08:43:58.0041||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 16 action executed 
+2023-07-31 08:43:58.0041||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/16, Response: 200, Duration: 1 ms 
+2023-07-31 08:43:58.0041||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/16, Response: 200, Duration: 1 ms 
+2023-07-31 09:30:02.9807||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/10 
+2023-07-31 09:30:02.9807||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request started: GET /api/library/10 
+2023-07-31 09:30:02.9807||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 10 action invoked 
+2023-07-31 09:30:03.0555||INFO|BooksLibrary.Services.MyLibraryService|GET book with id: 10 action executed 
+2023-07-31 09:30:03.0555||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/10, Response: 200, Duration: 74 ms 
+2023-07-31 09:30:03.0555||INFO|BooksLibrary.Middleware.LoggerFilterAttribbute|Request finished: GET /api/library/10, Response: 200, Duration: 75 ms 

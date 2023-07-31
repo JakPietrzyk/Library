@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Rental/Rental.csproj",
+                "${workspaceFolder}/HistoryRental/HistoryRental.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/Rental/Rental.csproj",
+                "${workspaceFolder}/HistoryRental/HistoryRental.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/Rental/Rental.csproj"
+                "${workspaceFolder}/HistoryRental/HistoryRental.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

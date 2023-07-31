@@ -46,9 +46,18 @@ namespace HistoryRental.Services
                     {
                         var message = consumer.Consume(stoppingToken);
                         var result = JsonConvert.DeserializeObject<KafkaRental>(message.Value);
-
-                        var sendToDatabase = _mapper.Map<MongoDbRental>(result);
-                        await _rentalCollection.InsertOneAsync(_mapper.Map<MongoDbRental>(result), cancellationToken: stoppingToken);
+                        if(result is not null && result.Action == "DELETE")
+                        {
+                            var filter = Builders<MongoDbRental>.Filter.Where(f => f.RentId == result.RentId);
+                            var update = Builders<MongoDbRental>.Update.Set(r => r.rentStatus, RentStatus.Returned );
+                            await _rentalCollection.FindOneAndUpdateAsync(filter,update,new FindOneAndUpdateOptions<MongoDbRental>(), stoppingToken);
+                        }
+                        else
+                        {
+                            var sendToDatabase = _mapper.Map<MongoDbRental>(result);
+                            await _rentalCollection.InsertOneAsync(_mapper.Map<MongoDbRental>(result), cancellationToken: stoppingToken);
+                        }
+                        
                     }
                 }
                 catch(OperationCanceledException)

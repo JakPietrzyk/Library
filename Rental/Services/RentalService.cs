@@ -148,6 +148,13 @@ namespace Rental.Services
             
             _context.Rent.Remove(rent);
             await _context.SaveChangesAsync();
+
+            var addToKafka = _mapper.Map<CustomerKafkaDelete>(rent);
+            addToKafka.CusotmerId = rent.CustomerId;
+            addToKafka.RentId = rent.Id;
+            string jsonString = JsonConvert.SerializeObject(addToKafka, Formatting.Indented);
+            SendMessageToKafka(jsonString);
+
             _logger.LogInformation($"DELETE Customer with id: {id} executed");
         }
         public async Task Update(int customerId, Book book)

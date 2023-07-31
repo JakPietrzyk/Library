@@ -1,0 +1,54 @@
+2023-07-31 08:35:47.0391||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/ 
+2023-07-31 08:35:47.0693||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/ 
+2023-07-31 08:35:47.0925||INFO|Rental.Services.RentalService|GET all Customers   action invoked 
+2023-07-31 08:35:49.6132||INFO|Rental.Services.RentalService|GET all Customers   action executed 
+2023-07-31 08:35:49.6132||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/, Response: 200, Duration: 2546 ms 
+2023-07-31 08:35:49.6132||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/, Response: 200, Duration: 2577 ms 
+2023-07-31 08:42:33.7996||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/ 
+2023-07-31 08:42:33.8337||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/ 
+2023-07-31 08:42:33.8337||INFO|Rental.Services.RentalService|GET all Customers   action invoked 
+2023-07-31 08:42:34.8340||INFO|Rental.Services.RentalService|GET all Customers   action executed 
+2023-07-31 08:42:34.8340||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/, Response: 200, Duration: 996 ms 
+2023-07-31 08:42:34.8340||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/, Response: 200, Duration: 1025 ms 
+2023-07-31 08:42:50.5831||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: DELETE /api/rental/rent/27 
+2023-07-31 08:42:50.5831||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: DELETE /api/rental/rent/27 
+2023-07-31 08:42:50.5831||INFO|Rental.Services.RentalService|DELETE Customer with id: 27 invoked 
+2023-07-31 08:42:50.6979||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: DELETE /api/rental/rent/27, Response: 200, Duration: 104 ms 
+2023-07-31 08:42:50.6979||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: DELETE /api/rental/rent/27, Response: 200, Duration: 104 ms 
+2023-07-31 08:43:40.9454||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: DELETE /api/rental/rent/27 
+2023-07-31 08:43:40.9714||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: DELETE /api/rental/rent/27 
+2023-07-31 08:43:40.9714||INFO|Rental.Services.RentalService|DELETE Customer with id: 27 invoked 
+2023-07-31 08:43:41.6072||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: DELETE /api/rental/rent/27, Response: 200, Duration: 635 ms 
+2023-07-31 08:43:41.6072||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: DELETE /api/rental/rent/27, Response: 200, Duration: 663 ms 
+2023-07-31 08:43:41.6072||ERROR|Rental.Middleware.ErrorHandlingMiddleware|Rent not found 
+2023-07-31 08:43:53.3448||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: DELETE /api/rental/rent/26 
+2023-07-31 08:43:53.3448||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: DELETE /api/rental/rent/26 
+2023-07-31 08:43:53.3448||INFO|Rental.Services.RentalService|DELETE Customer with id: 26 invoked 
+2023-07-31 08:43:53.9014||INFO|Rental.Services.RentalService|DELETE Customer with id: 26 executed 
+2023-07-31 08:43:53.9014||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: DELETE /api/rental/rent/26, Response: 200, Duration: 556 ms 
+2023-07-31 08:43:53.9014||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: DELETE /api/rental/rent/26, Response: 200, Duration: 556 ms 
+2023-07-31 08:43:57.7740||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/ 
+2023-07-31 08:43:57.7740||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/ 
+2023-07-31 08:43:57.7847||INFO|Rental.Services.RentalService|GET all Customers   action invoked 
+2023-07-31 08:43:58.0141||INFO|Rental.Services.RentalService|GET all Customers   action executed 
+2023-07-31 08:43:58.0141||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/, Response: 200, Duration: 235 ms 
+2023-07-31 08:43:58.0141||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/, Response: 200, Duration: 236 ms 
+2023-07-31 09:28:58.0075||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: DELETE /api/rental/rent/25 
+2023-07-31 09:28:58.0075||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: DELETE /api/rental/rent/25 
+2023-07-31 09:28:58.0075||INFO|Rental.Services.RentalService|DELETE Customer with id: 25 invoked 
+2023-07-31 09:28:58.1370||INFO|Rental.Services.RentalService|DELETE Customer with id: 25 executed 
+2023-07-31 09:28:58.1370||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: DELETE /api/rental/rent/25, Response: 200, Duration: 129 ms 
+2023-07-31 09:28:58.1370||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: DELETE /api/rental/rent/25, Response: 200, Duration: 129 ms 
+2023-07-31 09:30:02.9736||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/8/book/10 
+2023-07-31 09:30:02.9736||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/8/book/10 
+2023-07-31 09:30:03.0589||INFO|Rental.Services.RentalService|UPDATE Customer with id: 8 invoked 
+2023-07-31 09:30:03.0771||INFO|Rental.Services.RentalService|GET Customer with rented book with id: 10 action to check availability returns bool invoked 
+2023-07-31 09:30:03.2603||INFO|Rental.Services.RentalService|UPDATE Customer with id: 8 invoked 
+2023-07-31 09:30:03.2603||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/8/book/10, Response: 200, Duration: 287 ms 
+2023-07-31 09:30:03.2603||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/8/book/10, Response: 200, Duration: 287 ms 
+2023-07-31 09:31:44.1199||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: DELETE /api/rental/rent/28 
+2023-07-31 09:31:44.1199||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: DELETE /api/rental/rent/28 
+2023-07-31 09:31:44.1199||INFO|Rental.Services.RentalService|DELETE Customer with id: 28 invoked 
+2023-07-31 09:31:44.2393||INFO|Rental.Services.RentalService|DELETE Customer with id: 28 executed 
+2023-07-31 09:31:44.2393||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: DELETE /api/rental/rent/28, Response: 200, Duration: 119 ms 
+2023-07-31 09:31:44.2393||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: DELETE /api/rental/rent/28, Response: 200, Duration: 119 ms 

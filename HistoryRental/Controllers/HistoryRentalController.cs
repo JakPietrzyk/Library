@@ -18,10 +18,10 @@ namespace HistoryRental.Controllers
             _historyRentalService = historyRentalService;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<MongoDbRental>>> GetAll()
+        [HttpGet("{id}/{n}")]
+        public async Task<ActionResult<IEnumerable<MongoDbRental>>> GetAll([FromRoute]int id, [FromRoute]int n)
         {
-            var customers = await _historyRentalService.GetAll();
+            var customers = await _historyRentalService.GetAll(id, n);
 
             return Ok(customers);
         }
@@ -32,5 +32,6 @@ namespace HistoryRental.Controllers
 
             return Created($"/api/rental/{id}", null);
         } 
+        
     }
 }

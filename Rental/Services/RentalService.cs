@@ -14,6 +14,7 @@ namespace Rental.Services
     public interface IRentalService
     {
         Task<IEnumerable<CustomerDto>> GetAll(DateTime? from, DateTime? to);
+        Task<CustomerDto> GetCustomer(int id);
         Task<int> Create(Customer dto);
         bool CheckAvailability(int id);
         Task<int> Rent(CreateCustomerDto dto, Book book);
@@ -89,7 +90,15 @@ namespace Rental.Services
 
             return result;
         }
-
+        public async Task<CustomerDto> GetCustomer(int id)
+        {
+            _logger.LogInformation($"GET Customer with id {id} action invoked");
+            var customer = await _context.Customer.FirstOrDefaultAsync(c => c.Id == id);
+            if(customer is null) throw new NotFoundException("Customer not found");
+            
+            _logger.LogInformation($"GET Customer with id {id} action executed");
+            return _mapper.Map<CustomerDto>(customer);
+        }
         public async Task<int> Create(Customer customer)
         {
             _logger.LogInformation($"CREATE Customer action invoked");

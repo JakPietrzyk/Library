@@ -35,6 +35,12 @@ namespace Rental.Controllers
             _rentalService.CheckRent(id);
             return Ok();
         }
+        [HttpGet("customer/{id}")]
+        public async Task<ActionResult<CustomerDto>> GetCustomer([FromRoute]int id)
+        {
+            var customer = await _rentalService.GetCustomer(id);
+            return Ok(customer);
+        }
 
         // [HttpPost("new")]
         // public async Task<ActionResult> CreateCustomer([FromBody] CreateCustomerDto dto)

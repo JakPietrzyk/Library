@@ -52,3 +52,186 @@
 2023-07-31 09:31:44.2393||INFO|Rental.Services.RentalService|DELETE Customer with id: 28 executed 
 2023-07-31 09:31:44.2393||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: DELETE /api/rental/rent/28, Response: 200, Duration: 119 ms 
 2023-07-31 09:31:44.2393||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: DELETE /api/rental/rent/28, Response: 200, Duration: 119 ms 
+2023-07-31 10:04:33.4340||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/8/book/10 
+2023-07-31 10:04:33.4574||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/8/book/10 
+2023-07-31 10:04:34.9595||INFO|Rental.Services.RentalService|UPDATE Customer with id: 8 invoked 
+2023-07-31 10:04:35.8221||INFO|Rental.Services.RentalService|GET Customer with rented book with id: 10 action to check availability returns bool invoked 
+2023-07-31 10:04:37.2808||INFO|Rental.Services.RentalService|UPDATE Customer with id: 8 invoked 
+2023-07-31 10:04:37.2808||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/8/book/10, Response: 200, Duration: 3820 ms 
+2023-07-31 10:04:37.2838||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/8/book/10, Response: 200, Duration: 3851 ms 
+2023-07-31 10:06:11.8485||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: DELETE /api/rental/rent/29 
+2023-07-31 10:06:11.8485||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: DELETE /api/rental/rent/29 
+2023-07-31 10:06:11.8485||INFO|Rental.Services.RentalService|DELETE Customer with id: 29 invoked 
+2023-07-31 10:06:12.0000||INFO|Rental.Services.RentalService|DELETE Customer with id: 29 executed 
+2023-07-31 10:06:12.0000||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: DELETE /api/rental/rent/29, Response: 200, Duration: 151 ms 
+2023-07-31 10:06:12.0000||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: DELETE /api/rental/rent/29, Response: 200, Duration: 151 ms 
+2023-07-31 10:12:21.8447||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/8/book/11 
+2023-07-31 10:12:21.8447||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/8/book/11 
+2023-07-31 10:12:21.9778||INFO|Rental.Services.RentalService|UPDATE Customer with id: 8 invoked 
+2023-07-31 10:12:22.0193||INFO|Rental.Services.RentalService|GET Customer with rented book with id: 11 action to check availability returns bool invoked 
+2023-07-31 10:12:22.1463||INFO|Rental.Services.RentalService|UPDATE Customer with id: 8 invoked 
+2023-07-31 10:12:22.1463||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/8/book/11, Response: 200, Duration: 301 ms 
+2023-07-31 10:12:22.1463||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/8/book/11, Response: 200, Duration: 301 ms 
+2023-07-31 10:12:29.7704||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: DELETE /api/rental/rent/30 
+2023-07-31 10:12:29.7704||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: DELETE /api/rental/rent/30 
+2023-07-31 10:12:29.7704||INFO|Rental.Services.RentalService|DELETE Customer with id: 30 invoked 
+2023-07-31 10:12:29.8844||INFO|Rental.Services.RentalService|DELETE Customer with id: 30 executed 
+2023-07-31 10:12:29.8844||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: DELETE /api/rental/rent/30, Response: 200, Duration: 113 ms 
+2023-07-31 10:12:29.8844||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: DELETE /api/rental/rent/30, Response: 200, Duration: 114 ms 
+2023-07-31 10:19:05.0622||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/8/book/11 
+2023-07-31 10:19:05.0622||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/8/book/11 
+2023-07-31 10:19:05.1517||INFO|Rental.Services.RentalService|UPDATE Customer with id: 8 invoked 
+2023-07-31 10:19:05.1517||INFO|Rental.Services.RentalService|GET Customer with rented book with id: 11 action to check availability returns bool invoked 
+2023-07-31 10:19:05.2705||INFO|Rental.Services.RentalService|UPDATE Customer with id: 8 invoked 
+2023-07-31 10:19:05.2705||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/8/book/11, Response: 200, Duration: 208 ms 
+2023-07-31 10:19:05.2705||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/8/book/11, Response: 200, Duration: 208 ms 
+2023-07-31 10:21:38.8882||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: DELETE /api/rental/rent/31 
+2023-07-31 10:21:38.8882||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: DELETE /api/rental/rent/31 
+2023-07-31 10:21:38.8882||INFO|Rental.Services.RentalService|DELETE Customer with id: 31 invoked 
+2023-07-31 10:21:39.0052||INFO|Rental.Services.RentalService|DELETE Customer with id: 31 executed 
+2023-07-31 10:21:39.0052||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: DELETE /api/rental/rent/31, Response: 200, Duration: 116 ms 
+2023-07-31 10:21:39.0052||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: DELETE /api/rental/rent/31, Response: 200, Duration: 117 ms 
+2023-07-31 10:49:26.0808||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/8/book/10 
+2023-07-31 10:49:26.0818||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/8/book/10 
+2023-07-31 10:49:26.3193||INFO|Rental.Services.RentalService|UPDATE Customer with id: 8 invoked 
+2023-07-31 10:49:26.3380||INFO|Rental.Services.RentalService|GET Customer with rented book with id: 10 action to check availability returns bool invoked 
+2023-07-31 10:49:26.4650||INFO|Rental.Services.RentalService|UPDATE Customer with id: 8 invoked 
+2023-07-31 10:49:26.4650||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/8/book/10, Response: 200, Duration: 383 ms 
+2023-07-31 10:49:26.4650||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/8/book/10, Response: 200, Duration: 384 ms 
+2023-07-31 11:12:10.8887||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/7/book/13 
+2023-07-31 11:12:10.8887||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/7/book/13 
+2023-07-31 11:12:11.1972||INFO|Rental.Services.RentalService|UPDATE Customer with id: 7 invoked 
+2023-07-31 11:12:11.1972||INFO|Rental.Services.RentalService|GET Customer with rented book with id: 13 action to check availability returns bool invoked 
+2023-07-31 11:12:11.3487||INFO|Rental.Services.RentalService|UPDATE Customer with id: 7 invoked 
+2023-07-31 11:12:11.3487||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/7/book/13, Response: 200, Duration: 459 ms 
+2023-07-31 11:12:11.3487||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/7/book/13, Response: 200, Duration: 460 ms 
+2023-07-31 11:13:33.8146||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: DELETE /api/rental/rent/33 
+2023-07-31 11:13:33.8146||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: DELETE /api/rental/rent/33 
+2023-07-31 11:13:33.8146||INFO|Rental.Services.RentalService|DELETE Customer with id: 33 invoked 
+2023-07-31 11:13:33.9550||INFO|Rental.Services.RentalService|DELETE Customer with id: 33 executed 
+2023-07-31 11:13:33.9550||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: DELETE /api/rental/rent/33, Response: 200, Duration: 139 ms 
+2023-07-31 11:13:33.9550||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: DELETE /api/rental/rent/33, Response: 200, Duration: 140 ms 
+2023-07-31 12:12:10.2856||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/7/book/13 
+2023-07-31 12:12:10.2856||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/7/book/13 
+2023-07-31 12:12:10.4946||INFO|Rental.Services.RentalService|UPDATE Customer with id: 7 invoked 
+2023-07-31 12:12:10.5140||INFO|Rental.Services.RentalService|GET Customer with rented book with id: 13 action to check availability returns bool invoked 
+2023-07-31 12:12:10.6508||INFO|Rental.Services.RentalService|UPDATE Customer with id: 7 invoked 
+2023-07-31 12:12:10.6508||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/7/book/13, Response: 200, Duration: 364 ms 
+2023-07-31 12:12:10.6508||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/7/book/13, Response: 200, Duration: 365 ms 
+2023-07-31 12:20:14.6084||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/7/book/16 
+2023-07-31 12:20:14.6084||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/7/book/16 
+2023-07-31 12:20:14.8232||INFO|Rental.Services.RentalService|UPDATE Customer with id: 7 invoked 
+2023-07-31 12:20:14.8232||INFO|Rental.Services.RentalService|GET Customer with rented book with id: 16 action to check availability returns bool invoked 
+2023-07-31 12:20:14.9726||INFO|Rental.Services.RentalService|UPDATE Customer with id: 7 invoked 
+2023-07-31 12:20:14.9726||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/7/book/16, Response: 200, Duration: 363 ms 
+2023-07-31 12:20:14.9726||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/7/book/16, Response: 200, Duration: 364 ms 
+2023-07-31 12:23:35.3753||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/7/book/16 
+2023-07-31 12:23:35.3753||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/7/book/16 
+2023-07-31 12:23:35.3890||INFO|Rental.Services.RentalService|UPDATE Customer with id: 7 invoked 
+2023-07-31 12:23:35.3890||INFO|Rental.Services.RentalService|GET Customer with rented book with id: 16 action to check availability returns bool invoked 
+2023-07-31 12:23:35.3890||INFO|Rental.Services.RentalService|GET Customer with rented book with id: 16 action to check availability returns bool executed 
+2023-07-31 12:23:35.3947||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/7/book/16, Response: 200, Duration: 18 ms 
+2023-07-31 12:23:35.3947||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/7/book/16, Response: 200, Duration: 19 ms 
+2023-07-31 12:23:35.3947||ERROR|Rental.Middleware.ErrorHandlingMiddleware|Book is not avaliable 
+2023-07-31 12:23:39.4554||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/7/book/15 
+2023-07-31 12:23:39.4554||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/7/book/15 
+2023-07-31 12:23:39.4645||INFO|Rental.Services.RentalService|UPDATE Customer with id: 7 invoked 
+2023-07-31 12:23:39.4645||INFO|Rental.Services.RentalService|GET Customer with rented book with id: 15 action to check availability returns bool invoked 
+2023-07-31 12:23:39.6025||INFO|Rental.Services.RentalService|UPDATE Customer with id: 7 invoked 
+2023-07-31 12:23:39.6025||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/7/book/15, Response: 200, Duration: 146 ms 
+2023-07-31 12:23:39.6025||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/7/book/15, Response: 200, Duration: 147 ms 
+2023-07-31 12:27:43.7507||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/7/book/14 
+2023-07-31 12:27:43.7507||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: POST /api/rental/7/book/14 
+2023-07-31 12:27:43.9193||INFO|Rental.Services.RentalService|UPDATE Customer with id: 7 invoked 
+2023-07-31 12:27:43.9193||INFO|Rental.Services.RentalService|GET Customer with rented book with id: 14 action to check availability returns bool invoked 
+2023-07-31 12:27:44.0623||INFO|Rental.Services.RentalService|UPDATE Customer with id: 7 invoked 
+2023-07-31 12:27:44.0623||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/7/book/14, Response: 200, Duration: 311 ms 
+2023-07-31 12:27:44.0623||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: POST /api/rental/7/book/14, Response: 200, Duration: 311 ms 
+2023-07-31 13:02:51.7726||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/6 
+2023-07-31 13:02:51.8015||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/6 
+2023-07-31 13:02:51.8015||INFO|Rental.Services.RentalService|GET Customer with id 6 action invoked 
+2023-07-31 13:02:52.5953||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/6, Response: 200, Duration: 793 ms 
+2023-07-31 13:02:52.5953||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/6, Response: 200, Duration: 824 ms 
+2023-07-31 13:04:23.3542||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/6 
+2023-07-31 13:04:23.3832||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/6 
+2023-07-31 13:04:23.3832||INFO|Rental.Services.RentalService|GET Customer with id 6 action invoked 
+2023-07-31 13:04:24.0689||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/6, Response: 200, Duration: 685 ms 
+2023-07-31 13:04:24.0689||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/6, Response: 200, Duration: 715 ms 
+2023-07-31 13:05:07.5250||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/5 
+2023-07-31 13:05:07.5250||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/5 
+2023-07-31 13:05:07.5250||INFO|Rental.Services.RentalService|GET Customer with id 5 action invoked 
+2023-07-31 13:05:07.5449||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/5, Response: 200, Duration: 19 ms 
+2023-07-31 13:05:07.5449||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/5, Response: 200, Duration: 20 ms 
+2023-07-31 13:05:09.1846||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/4 
+2023-07-31 13:05:09.1846||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/4 
+2023-07-31 13:05:09.1846||INFO|Rental.Services.RentalService|GET Customer with id 4 action invoked 
+2023-07-31 13:05:09.2270||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/4, Response: 200, Duration: 42 ms 
+2023-07-31 13:05:09.2270||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/4, Response: 200, Duration: 42 ms 
+2023-07-31 13:05:10.4028||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:05:10.4028||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:05:10.4028||INFO|Rental.Services.RentalService|GET Customer with id 8 action invoked 
+2023-07-31 13:05:10.4493||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 46 ms 
+2023-07-31 13:05:10.4493||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 46 ms 
+2023-07-31 13:05:17.1618||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/9 
+2023-07-31 13:05:17.1618||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/9 
+2023-07-31 13:05:17.1618||INFO|Rental.Services.RentalService|GET Customer with id 9 action invoked 
+2023-07-31 13:05:17.1618||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/9, Response: 200, Duration: 1 ms 
+2023-07-31 13:05:17.1618||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/9, Response: 200, Duration: 1 ms 
+2023-07-31 13:05:18.4387||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:05:18.4387||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:05:18.4387||INFO|Rental.Services.RentalService|GET Customer with id 8 action invoked 
+2023-07-31 13:05:18.4426||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 3 ms 
+2023-07-31 13:05:18.4426||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 4 ms 
+2023-07-31 13:06:59.6038||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:06:59.6334||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:06:59.6334||INFO|Rental.Services.RentalService|GET Customer with id 8 action invoked 
+2023-07-31 13:07:00.3601||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 726 ms 
+2023-07-31 13:07:00.3601||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 757 ms 
+2023-07-31 13:16:13.5080||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:16:13.5374||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:16:13.5374||INFO|Rental.Services.RentalService|GET Customer with id 8 action invoked 
+2023-07-31 13:16:14.2242||INFO|Rental.Services.RentalService|GET Customer with id 8 action executed 
+2023-07-31 13:16:14.2242||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 693 ms 
+2023-07-31 13:16:14.2242||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 723 ms 
+2023-07-31 13:16:17.3743||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:16:17.3743||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:16:17.3743||INFO|Rental.Services.RentalService|GET Customer with id 8 action invoked 
+2023-07-31 13:16:17.3933||INFO|Rental.Services.RentalService|GET Customer with id 8 action executed 
+2023-07-31 13:16:17.3938||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 19 ms 
+2023-07-31 13:16:17.3938||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 19 ms 
+2023-07-31 13:18:44.9366||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:18:44.9366||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:18:44.9366||INFO|Rental.Services.RentalService|GET Customer with id 8 action invoked 
+2023-07-31 13:18:44.9767||INFO|Rental.Services.RentalService|GET Customer with id 8 action executed 
+2023-07-31 13:18:44.9767||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 39 ms 
+2023-07-31 13:18:44.9767||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 40 ms 
+2023-07-31 13:18:46.3396||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:18:46.3396||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:18:46.3396||INFO|Rental.Services.RentalService|GET Customer with id 8 action invoked 
+2023-07-31 13:18:46.3396||INFO|Rental.Services.RentalService|GET Customer with id 8 action executed 
+2023-07-31 13:18:46.3396||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 1 ms 
+2023-07-31 13:18:46.3396||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 1 ms 
+2023-07-31 13:18:47.6001||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:18:47.6001||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:18:47.6001||INFO|Rental.Services.RentalService|GET Customer with id 8 action invoked 
+2023-07-31 13:18:47.6001||INFO|Rental.Services.RentalService|GET Customer with id 8 action executed 
+2023-07-31 13:18:47.6001||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 2 ms 
+2023-07-31 13:18:47.6001||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 2 ms 
+2023-07-31 13:18:48.8939||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:18:48.8939||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:18:48.8939||INFO|Rental.Services.RentalService|GET Customer with id 8 action invoked 
+2023-07-31 13:18:48.8939||INFO|Rental.Services.RentalService|GET Customer with id 8 action executed 
+2023-07-31 13:18:48.8939||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 0 ms 
+2023-07-31 13:18:48.8939||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 1 ms 
+2023-07-31 13:19:23.7538||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:19:23.7538||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:19:23.7538||INFO|Rental.Services.RentalService|GET Customer with id 8 action invoked 
+2023-07-31 13:19:23.7538||INFO|Rental.Services.RentalService|GET Customer with id 8 action executed 
+2023-07-31 13:19:23.7538||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 0 ms 
+2023-07-31 13:19:23.7538||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 1 ms 
+2023-07-31 13:20:54.0457||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:20:54.0457||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/8 
+2023-07-31 13:20:54.0457||INFO|Rental.Services.RentalService|GET Customer with id 8 action invoked 
+2023-07-31 13:20:54.0457||INFO|Rental.Services.RentalService|GET Customer with id 8 action executed 
+2023-07-31 13:20:54.0457||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 1 ms 
+2023-07-31 13:20:54.0457||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/8, Response: 200, Duration: 1 ms 

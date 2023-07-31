@@ -8,7 +8,9 @@ namespace HistoryRental.Mappers
     {
         public HistoryRentalMappingProfile()
         {
-            CreateMap<KafkaRental, MongoDbRental>();
+            CreateMap<KafkaRental, MongoDbRental>()
+                .ForMember(b => b.rentDate, opt => opt.MapFrom(src => DateTime.Now)); 
+            CreateMap<Book,BookDto>();
         }
 
     }

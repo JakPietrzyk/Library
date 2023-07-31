@@ -14,7 +14,9 @@ namespace HistoryRental.Model
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id {get;set;}
-        public RentStatus rentStatus {get;set;} = RentStatus.Rented;
+        public DateTime rentDate{get;set;} 
+        [BsonIgnoreIfNull]
+        public DateTime? returnDate{get;set;} = null;
         public int RentId{get;set;}
         public int cusotmerId{get;set;}
         public int bookId{get;set;} 

@@ -49,7 +49,7 @@ namespace HistoryRental.Services
                         if(result is not null && result.Action == "DELETE")
                         {
                             var filter = Builders<MongoDbRental>.Filter.Where(f => f.RentId == result.RentId);
-                            var update = Builders<MongoDbRental>.Update.Set(r => r.rentStatus, RentStatus.Returned );
+                            var update = Builders<MongoDbRental>.Update.Set(r => r.returnDate, DateTime.Now);
                             await _rentalCollection.FindOneAndUpdateAsync(filter,update,new FindOneAndUpdateOptions<MongoDbRental>(), stoppingToken);
                         }
                         else

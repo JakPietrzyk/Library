@@ -7,6 +7,7 @@ namespace HistoryRental.Dtos;
 
 public partial class RentDto
 {
-    public DateTimeOffset RentDate{get;set;}
+    public DateTime RentDate{get;set;}
+    public DateTime? ReturnDate{get;set;} = null; 
     public BookDto? Book{get;set;}
 }

@@ -1,0 +1,4 @@
+{ "X-Request-ID": "c7230b00-2c28-498f-ab71-dd8aaca37f65", "time": "2023-08-01 15:53:52.2169", "level": "INFO", "message": "Request started: GET /api/rental/customer/7, Request ID: c7230b00-2c28-498f-ab71-dd8aaca37f65" }
+{ "time": "2023-08-01 15:53:52.2596", "level": "INFO", "message": "GET Customer with id 7 action invoked" }
+{ "time": "2023-08-01 15:53:53.9931", "level": "INFO", "message": "GET Customer with id 7 action executed" }
+{ "X-Request-ID": "c7230b00-2c28-498f-ab71-dd8aaca37f65", "time": "2023-08-01 15:53:54.0129", "level": "INFO", "message": "Request finished: GET /api/rental/customer/7, Request ID: c7230b00-2c28-498f-ab71-dd8aaca37f65, Response: 200, Duration: 1801 ms" }

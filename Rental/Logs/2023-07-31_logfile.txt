@@ -428,3 +428,9 @@
 2023-07-31 16:04:43.7769||INFO|Rental.Services.RentalService|GET Customer with id 7 action executed 
 2023-07-31 16:04:43.7860||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/7, Response: 200, Duration: 746 ms 
 2023-07-31 16:04:43.7860||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/7, Response: 200, Duration: 775 ms 
+2023-07-31 16:19:13.5673||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/7 
+2023-07-31 16:19:13.5976||INFO|Rental.Middleware.LoggerFilterAttribbute|Request started: GET /api/rental/customer/7 
+2023-07-31 16:19:13.5976||INFO|Rental.Services.RentalService|GET Customer with id 7 action invoked 
+2023-07-31 16:19:14.3372||INFO|Rental.Services.RentalService|GET Customer with id 7 action executed 
+2023-07-31 16:19:14.3372||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/7, Response: 200, Duration: 746 ms 
+2023-07-31 16:19:14.3372||INFO|Rental.Middleware.LoggerFilterAttribbute|Request finished: GET /api/rental/customer/7, Response: 200, Duration: 777 ms 

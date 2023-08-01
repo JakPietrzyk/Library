@@ -226,3 +226,4 @@ C:\Users\Jakub\Documents\C#\1 task\Rental\bin\Debug\net7.0\runtimes\win-x86\nati
 C:\Users\Jakub\Documents\C#\1 task\Rental\bin\Debug\net7.0\runtimes\win-x86\native\vcruntime140.dll
 C:\Users\Jakub\Documents\C#\1 task\Rental\bin\Debug\net7.0\runtimes\win-x86\native\zlib1.dll
 C:\Users\Jakub\Documents\C#\1 task\Rental\bin\Debug\net7.0\runtimes\win-x86\native\zstd.dll
+C:\Users\Jakub\Documents\C#\1 task\Rental\bin\Debug\net7.0\Logs\2023-08-01_log-file.json

@@ -18,9 +18,6 @@ namespace HistoryRental.Clients
         public RentalClient(HttpClient client)
         {
             _client = client;
-                        var reuqestId = Guid.NewGuid();
-            _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("X-Request-Id", reuqestId.ToString());
-            
         }
 
         public async Task<CustomerDto> GetCustomer(int id)
@@ -28,19 +25,10 @@ namespace HistoryRental.Clients
             HttpResponseMessage response = new();
             try
             {   
-                response = await _client.GetAsync($"{_url}/customer/{id}");
-                if (response.Headers.TryGetValues("X-Request-ID", out IEnumerable<string> requestIdValues))
-                {
-                    // response.Context.Items["X-Request-ID"]
-                    string requestId = requestIdValues.FirstOrDefault();
-                    // Now you have the X-Request-ID from the response header
-                    // You can use it as needed
-                    // For example, you can log it or process it further
-                }
+                string requestId = Guid.NewGuid().ToString();
+                _client.DefaultRequestHeaders.Add("X-Request-ID", requestId);
                 
-                // string requestId = response.Headers.Contains("X-Request-ID")
-                // ? response.Headers.FirstOrDefault(x => x."X-Request-ID"].ToString()
-                // : Guid.NewGuid().ToString();
+                response = await _client.GetAsync($"{_url}/customer/{id}");
             }
             catch
             {
@@ -57,7 +45,12 @@ namespace HistoryRental.Clients
                     return result;
                 }
             }
-            throw new NotFoundException("Customer not found");
+            else
+            {
+                throw new NotFoundException("Customer not found");
+            }
+            return null;
+           
         }
     }
 }

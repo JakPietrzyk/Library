@@ -8,9 +8,9 @@ using Rental.Middleware;
 
 namespace Rental.Controllers
 {
+    [ApiController]
     [Route("api/rental")]
     [ServiceFilter(typeof(LoggerFilterAttribbute))]
-    [ApiController]
     public class RentalController: ControllerBase
     {
         private readonly IRentalService _rentalService;
@@ -39,19 +39,8 @@ namespace Rental.Controllers
         public async Task<ActionResult<CustomerDto>> GetCustomer([FromRoute]int id)
         {
             var customer = await _rentalService.GetCustomer(id);
-            var reuqestId = Guid.NewGuid();
-            // Response.Headers.Add("X-Request-ID", reuqestId.ToString());
-            HttpContext.Items.Add("X-Request-ID", reuqestId.ToString());
             return Ok(customer);
         }
-
-        // [HttpPost("new")]
-        // public async Task<ActionResult> CreateCustomer([FromBody] CreateCustomerDto dto)
-        // {
-        //     // var id = await _rentalService.Create(dto);
-
-        //     // return Created($"/api/rental/{id}", null);
-        // } 
         [HttpPost("rent/{id}")]
         public async Task<ActionResult<CustomerDto>> RentBook([FromRoute]int id, [FromBody]CreateCustomerDto dto)
         {

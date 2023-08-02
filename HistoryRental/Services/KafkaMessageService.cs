@@ -13,7 +13,8 @@ namespace HistoryRental.Services
         private readonly string _kafkaTopic;
         private readonly ConsumerConfig _consumerConfig;
         private readonly IMapper _mapper;
-        public KafkaMessageService(IMapper mapper)
+        private readonly ILogger<KafkaMessageService> _logger;
+        public KafkaMessageService(IMapper mapper, ILogger<KafkaMessageService> logger)
         {
             _mapper = mapper;
             var mongoConnectionString = "mongodb://localhost:27017";
@@ -26,7 +27,7 @@ namespace HistoryRental.Services
                 GroupId = "listener"
             };
             _kafkaTopic = "rentalEvents";
-            
+            _logger = logger;
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -45,6 +46,7 @@ namespace HistoryRental.Services
                     while(!stoppingToken.IsCancellationRequested)
                     {
                         var message = consumer.Consume(stoppingToken);
+                        _logger.LogDebug(($"Data from Kafka recieved {message.Value} invoked"));
                         var result = JsonConvert.DeserializeObject<KafkaRental>(message.Value);
                         if(result is not null && result.ReturnDate is not null)
                         {
@@ -57,7 +59,7 @@ namespace HistoryRental.Services
                             var sendToDatabase = _mapper.Map<MongoDbRental>(result);
                             await _rentalCollection.InsertOneAsync(_mapper.Map<MongoDbRental>(result), cancellationToken: stoppingToken);
                         }
-                        
+                        _logger.LogDebug(($"Data from Kafka recieved {message.Value} consumed"));
                     }
                 }
                 catch(OperationCanceledException)

@@ -31,6 +31,7 @@ namespace Rental{
             _rentalClientMocked = new Mock<IRentalClient>();
         }
         
+        
     }
 }
 

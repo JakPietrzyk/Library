@@ -21,6 +21,7 @@ namespace HistoryRental.Controllers
         [HttpGet("{id}/{n}")]
         public async Task<ActionResult<IEnumerable<MongoDbRental>>> GetAll([FromRoute]int id, [FromRoute]int n)
         {
+            _historyRentalService.AddXRequestId(HttpContext);
             var customers = await _historyRentalService.GetAll(id, n);
 
             return Ok(customers);
@@ -28,6 +29,7 @@ namespace HistoryRental.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateCustomer([FromBody] MongoDbRental dto)
         {
+            _historyRentalService.AddXRequestId(HttpContext);
             var id = await _historyRentalService.Create(dto);
 
             return Created($"/api/rental/{id}", null);

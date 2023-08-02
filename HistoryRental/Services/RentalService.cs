@@ -15,6 +15,7 @@ namespace HistoryRental.Services
     {
         Task<CustomerDto> GetAll(int id, int n);
         Task<string> Create(MongoDbRental dto);
+        void AddXRequestId(HttpContext context);
     }
 
     public class HistoryRentalService: IHistoryRentalService
@@ -23,7 +24,8 @@ namespace HistoryRental.Services
         private readonly IBooksClient _booksClient;
         private readonly IRentalClient _rentalClient;
         private readonly IMapper _mapper; 
-        public HistoryRentalService(IOptions<HistoryRentalDatabaseSettings> historyRentalDatabaseSettings, IBooksClient booksClient, IRentalClient rentalClient, IMapper mapper)
+        private readonly ILogger<HistoryRentalService> _logger;
+        public HistoryRentalService(IOptions<HistoryRentalDatabaseSettings> historyRentalDatabaseSettings, IBooksClient booksClient, IRentalClient rentalClient, IMapper mapper, ILogger<HistoryRentalService> logger)
         {
             var mongoConnectionString = "mongodb://localhost:27017";
             var mongoClient = new MongoClient(mongoConnectionString);
@@ -32,13 +34,26 @@ namespace HistoryRental.Services
             _booksClient = booksClient;
             _rentalClient = rentalClient;
             _mapper = mapper;
+            _logger = logger;
+        }
+        public void AddXRequestId(HttpContext context)
+        {
+            var listToUpdate = (List<string>?)context.Items["X-Request-ID"];
+            string requestId = listToUpdate.Last();
 
+            _rentalClient.SetXRequestId(requestId);
+            _booksClient.SetXRequestId(requestId);
         }
         public async Task<CustomerDto> GetAll(int id, int n)
         {
+            _logger.LogDebug(($"GetAll Customer with id: {id} invoked"));
             CustomerDto customer;
+            string requestId = Guid.NewGuid().ToString();
+            
+            
             try
             {
+                
                 customer = await _rentalClient.GetCustomer(id);
             }
             catch
@@ -80,13 +95,15 @@ namespace HistoryRental.Services
                         Surname = customer.Surname,
                         Rents = listOfRents
                     };
-
+            _logger.LogDebug(($"GetAll Customer with id: {id} executed"));
             return result;
 
         }
         public async Task<string> Create(MongoDbRental dto)
         {
+            _logger.LogDebug(($"Create Rental with rentDate: {dto.rentDate} invoked"));
             await _rentalCollection.InsertOneAsync(dto);
+            _logger.LogDebug(($"Create Rental with rentDate: {dto.rentDate} executed"));
             return dto.Id;
         }
     }

@@ -24,6 +24,7 @@ namespace Rental.Services
         Customer CheckRent(int id);
         Task Update(int customerId, Book book);
         Task DeleteRent(int id);
+        void AddXRequestId(HttpContext context);
     }
     public class IgnoreReturnedDateContractResolver : DefaultContractResolver
     {
@@ -55,19 +56,25 @@ namespace Rental.Services
             Uri uri = new Uri("http://localhost:9092");    
             string topic = "rentalEvents";
         }
+        public void AddXRequestId(HttpContext context)
+        {
+            var listToUpdate = (List<string>?)context.Items["X-Request-ID"];
+            string requestId = listToUpdate.Last();
 
+            _client.SetXRequestId(requestId);
+        }
         public Customer CheckRent(int id)
         {
-            _logger.LogInformation($"GET Customer with rented book with id: {id} action invoked");
+            _logger.LogDebug($"GET Customer with rented book with id: {id} action invoked");
             var result = _context.Customer.FirstOrDefault(c => c.Rents.Any(b => b.bookId == id));
             
             if(result is null) throw new NotFoundException("Book is not available");
-            _logger.LogInformation($"GET Customer with rented book with id: {id} action invoked");
+            _logger.LogDebug($"GET Customer with rented book with id: {id} action invoked");
             return result;
         }
         public async Task<IEnumerable<CustomerDto>> GetAll(DateTime? from, DateTime? to)
         {
-            _logger.LogInformation($"GET all Customers {from} {to} action invoked");
+            _logger.LogDebug($"GET all Customers {from} {to} action invoked");
             var customersQuery = _context.Customer.AsQueryable();
 
             if(from.HasValue)
@@ -101,43 +108,43 @@ namespace Rental.Services
                     });
             }
             
-            _logger.LogInformation($"GET all Customers {from} {to} action executed");
+            _logger.LogDebug($"GET all Customers {from} {to} action executed");
 
             return result;
         }
         public async Task<CustomerDto> GetCustomer(int id)
         {
-            _logger.LogInformation($"GET Customer with id {id} action invoked");
+            _logger.LogDebug($"GET Customer with id {id} action invoked");
             var customer = await _context.Customer.FirstOrDefaultAsync(c => c.Id == id);
             if(customer is null) throw new NotFoundException("Customer not found");
             
-            _logger.LogInformation($"GET Customer with id {id} action executed");
+            _logger.LogDebug($"GET Customer with id {id} action executed");
             return _mapper.Map<CustomerDto>(customer);
         }
         public async Task<int> Create(Customer customer)
         {
-            _logger.LogInformation($"CREATE Customer action invoked");
+            _logger.LogDebug($"CREATE Customer action invoked");
 
             // var customer = _mapper.Map<Customer>(dto);
             _context.Customer.Add(customer);
             await _context.SaveChangesAsync();
 
-            _logger.LogInformation($"CREATE Customer action executed");
+            _logger.LogDebug($"CREATE Customer action executed");
             return customer.Id;
         }
         public bool CheckAvailability(int id)
         {
-            _logger.LogInformation($"GET Customer with rented book with id: {id} action to check availability returns bool invoked");
+            _logger.LogDebug($"GET Customer with rented book with id: {id} action to check availability returns bool invoked");
 
             Customer? result =_context.Customer.FirstOrDefault(c => c.Rents.Any(b => b.bookId == id));
             if(result is null) return true;
 
-            _logger.LogInformation($"GET Customer with rented book with id: {id} action to check availability returns bool executed");
+            _logger.LogDebug($"GET Customer with rented book with id: {id} action to check availability returns bool executed");
             return false;
         }
         public async Task<int> Rent(CreateCustomerDto dto, Book book)
         {
-            _logger.LogInformation($"CREATE Customer {dto.Surname} with rented book with id: {book.Id} invoked");
+            _logger.LogDebug($"CREATE Customer {dto.Surname} with rented book with id: {book.Id} invoked");
             if(!CheckAvailability(book.Id)) throw new NotFoundException("Book is not avaliable");
             // var rentedBook = _mapper.Map<Boo>(book);
 
@@ -151,7 +158,7 @@ namespace Rental.Services
             
 
             var id = await Create(customerToAdd);
-            _logger.LogInformation($"CREATE Customer {dto.Surname} with rented book with id: {book.Id} invoked");
+            _logger.LogDebug($"CREATE Customer {dto.Surname} with rented book with id: {book.Id} invoked");
             var addToKafka = _mapper.Map<CustomerKafka>(rent);
             addToKafka.CusotmerId = rent.CustomerId;
             addToKafka.RentId = rent.Id;
@@ -169,18 +176,18 @@ namespace Rental.Services
         }
         public async Task Delete(int id)
         {
-            _logger.LogInformation($"DELETE Customer with id: {id} invoked");
+            _logger.LogDebug($"DELETE Customer with id: {id} invoked");
             var customer = _context.Customer.FirstOrDefault(c=>c.Id==id);
 
             if(customer is null) throw new NotFoundException("Customer not found");
 
             _context.Customer.Remove(customer);
             await _context.SaveChangesAsync();
-            _logger.LogInformation($"DELETE Customer with id: {id} executed");
+            _logger.LogDebug($"DELETE Customer with id: {id} executed");
         }
         public async Task DeleteRent(int id)
         {
-            _logger.LogInformation($"DELETE Customer with id: {id} invoked");
+            _logger.LogDebug($"DELETE Customer with id: {id} invoked");
             // var customer = _context.Customer.FirstOrDefault(c => c.Rents.Any(r => r.Id == id));
             var rent = _context.Rent.FirstOrDefault(r => r.Id == id);
             if(rent is null) throw new NotFoundException("Rent not found");
@@ -195,11 +202,11 @@ namespace Rental.Services
             string jsonString = JsonConvert.SerializeObject(addToKafka, Formatting.Indented);
             SendMessageToKafka(jsonString);
 
-            _logger.LogInformation($"DELETE Customer with id: {id} executed");
+            _logger.LogDebug($"DELETE Customer with id: {id} executed");
         }
         public async Task Update(int customerId, Book book)
         {
-            _logger.LogInformation(($"UPDATE Customer with id: {customerId} invoked"));
+            _logger.LogDebug(($"UPDATE Customer with id: {customerId} invoked"));
             var customerToUpdate = await _context.Customer.Include(c => c.Rents).FirstOrDefaultAsync(c => c.Id == customerId);
             if(customerToUpdate is null) throw new NotFoundException("Customer not found");
             if(!CheckAvailability(book.Id)) throw new BadHttpRequestException("Book is not avaliable");
@@ -220,7 +227,7 @@ namespace Rental.Services
             string jsonString = JsonConvert.SerializeObject(addToKafka, Formatting.Indented);
             SendMessageToKafka(jsonString);
 
-            _logger.LogInformation(($"UPDATE Customer with id: {customerId} invoked"));
+            _logger.LogDebug(($"UPDATE Customer with id: {customerId} invoked"));
         }
 
 

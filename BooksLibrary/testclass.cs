@@ -19,17 +19,19 @@ namespace BooksLibrary{
         private readonly Fixture _fixture;
         private MyLibraryController? _controller; 
         private Mock<ILibraryService> _libraryService;
+        private Mock<HttpContext> _httpContext;
         public Testclass()
         {
             _fixture = new Fixture();
             _libraryService = new Mock<ILibraryService>();
+            _httpContext = new Mock<HttpContext>();
         }
         [Fact]
         public async Task Get_BooksDto_ReturnOk()
         {
             var booksList = _fixture.CreateMany<BookDto>(3).ToList();
 
-            _libraryService.Setup(c => c.GetAll()).Returns(Task.FromResult<IEnumerable<BookDto>>(booksList));
+            _libraryService.Setup(c => c.GetAll(_httpContext.Object)).Returns(Task.FromResult<IEnumerable<BookDto>>(booksList));
 
             _controller = new MyLibraryController(_libraryService.Object);
 
@@ -46,7 +48,7 @@ namespace BooksLibrary{
             _fixture.Customize<BookDto>(c => c.With(b => b.Id, bookId));
             var book = _fixture.Create<BookDto>();
 
-            _libraryService.Setup(c => c.GetById(bookId)).Returns(Task.FromResult(book));
+            _libraryService.Setup(c => c.GetById(bookId, _httpContext.Object)).Returns(Task.FromResult(book));
 
             _controller = new MyLibraryController(_libraryService.Object);
 
@@ -62,7 +64,7 @@ namespace BooksLibrary{
             var createBookDto = _fixture.Create<CreateBookDto>();
             int createdId = new();
 
-            _libraryService.Setup(c => c.Create(It.IsAny<CreateBookDto>())).Returns(Task.FromResult(createdId));
+            _libraryService.Setup(c => c.Create(It.IsAny<CreateBookDto>(), _httpContext.Object)).Returns(Task.FromResult(createdId));
 
             _controller = new MyLibraryController(_libraryService.Object);
 
@@ -78,7 +80,7 @@ namespace BooksLibrary{
             var bookId = 3;
             var book = _fixture.Create<UpdateBookDto>();
 
-            _libraryService.Setup(c => c.Update(It.IsAny<int>(), It.IsAny<UpdateBookDto>()));
+            _libraryService.Setup(c => c.Update(It.IsAny<int>(), It.IsAny<UpdateBookDto>(), _httpContext.Object));
 
             _controller = new MyLibraryController(_libraryService.Object);
 
@@ -96,7 +98,7 @@ namespace BooksLibrary{
             var bookId = 3;
             var book = _fixture.Create<UpdateBookDto>();
 
-            _libraryService.Setup(c => c.Delete(bookId));
+            _libraryService.Setup(c => c.Delete(bookId, _httpContext.Object));
 
             _controller = new MyLibraryController(_libraryService.Object);
 
@@ -127,7 +129,7 @@ namespace BooksLibrary{
 
                 var service = new MyLibraryService(dbContext, mapper, loggerMock.Object, httpClientMock.Object);
 
-                await service.Create(book);
+                await service.Create(book, _httpContext.Object);
 
                 Assert.Equal(1, dbContext.Books.Count());
             }
@@ -167,7 +169,7 @@ namespace BooksLibrary{
 
                 var service = new MyLibraryService(dbContext, mapper, loggerMock.Object, httpClientMock.Object);
 
-                await service.Update(id, updatedBookDto);
+                await service.Update(id, updatedBookDto, _httpContext.Object);
 
                 var updatedBook = dbContext.Books.FirstOrDefault(b => b.Id == id);
                 Assert.NotNull(updatedBook);
@@ -205,7 +207,7 @@ namespace BooksLibrary{
                 HttpClient client = new HttpClient();
                 var service = new MyLibraryService(dbContext, mapper, loggerMock.Object, client);
 
-                await service.Delete(id);
+                await service.Delete(id, _httpContext.Object);
 
                 var deletedBook = dbContext.Books.FirstOrDefault(b => b.Id == id);
                 Assert.Null(deletedBook);
@@ -245,7 +247,7 @@ namespace BooksLibrary{
             var mapperMock = new Mock<IMapper>();
             var myLibraryService = new MyLibraryService(dbContext, mapperMock.Object, loggerMock.Object, httpClient);
 
-            var result = await myLibraryService.Delete(id);
+            var result = await myLibraryService.Delete(id, _httpContext.Object);
 
             Assert.True(result);
         }

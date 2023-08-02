@@ -24,6 +24,7 @@ namespace Rental.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CustomerDto>>> GetAll([FromQuery]DateTime? from = null, [FromQuery]DateTime? to = null)
         {
+            _rentalService.AddXRequestId(HttpContext);
             var customers = await _rentalService.GetAll(from,to);
 
             return Ok(customers);
@@ -32,18 +33,21 @@ namespace Rental.Controllers
         [HttpGet("{id}")]
         public ActionResult GetRent([FromRoute]int id )
         {
+            _rentalService.AddXRequestId(HttpContext);
             _rentalService.CheckRent(id);
             return Ok();
         }
         [HttpGet("customer/{id}")]
         public async Task<ActionResult<CustomerDto>> GetCustomer([FromRoute]int id)
         {
+            _rentalService.AddXRequestId(HttpContext);
             var customer = await _rentalService.GetCustomer(id);
             return Ok(customer);
         }
         [HttpPost("rent/{id}")]
         public async Task<ActionResult<CustomerDto>> RentBook([FromRoute]int id, [FromBody]CreateCustomerDto dto)
         {
+            _rentalService.AddXRequestId(HttpContext);
             var book = await _client.GetBook(id);
             var CustomerId = await _rentalService.Rent(dto, book);
 
@@ -52,6 +56,7 @@ namespace Rental.Controllers
         [HttpPost("{customerId}/book/{bookId}")]
         public async Task<ActionResult> AddRentToCustomer([FromRoute]int customerId, [FromRoute]int bookId)
         {
+            _rentalService.AddXRequestId(HttpContext);
             var book = await _client.GetBook(bookId);
             await _rentalService.Update(customerId, book);
 
@@ -60,6 +65,7 @@ namespace Rental.Controllers
         [HttpDelete("rent/{id}")]
         public async Task<ActionResult> DeleteRent([FromRoute]int id)
         {
+            _rentalService.AddXRequestId(HttpContext);
             await _rentalService.DeleteRent(id);
 
             return NoContent();
@@ -67,6 +73,7 @@ namespace Rental.Controllers
         [HttpDelete("customer/{id}")]
         public async Task<ActionResult> DeleteCustomer([FromRoute]int id)
         {
+            _rentalService.AddXRequestId(HttpContext);
             await _rentalService.Delete(id);
 
             return NoContent();

@@ -9,12 +9,13 @@ namespace BooksLibrary.Services
 {
     public interface ILibraryService
     {
-        Task<BookDto> GetById(int id);
-        BookDto GetByTitle(string title);
-        Task<IEnumerable<BookDto>> GetAll();
-        Task<int> Create(CreateBookDto dto);
-        Task<bool> Delete(int id);
-        Task Update(int id, UpdateBookDto dto);
+        Task<BookDto> GetById(int id, HttpContext context);
+        BookDto GetByTitle(string title, HttpContext context);
+        Task<IEnumerable<BookDto>> GetAll(HttpContext context);
+        Task<int> Create(CreateBookDto dto, HttpContext context);
+        Task<bool> Delete(int id, HttpContext context);
+        Task Update(int id, UpdateBookDto dto, HttpContext context);
+        void AddXRequestId(HttpContext context);
     }
 
     public class MyLibraryService: ILibraryService
@@ -24,6 +25,7 @@ namespace BooksLibrary.Services
         private readonly ILogger<MyLibraryService> _logger;
         private readonly HttpClient _httpClient;
         private readonly string _url;
+        private string _requestId;
         public MyLibraryService(MyLibraryContext context, IMapper mapper, ILogger<MyLibraryService> logger, HttpClient httpClient)
         {
             _logger = logger;
@@ -31,64 +33,73 @@ namespace BooksLibrary.Services
             _mapper = mapper;
             _httpClient = httpClient;
             _url = "http://localhost:5024/api/rental/";
-
-
         }
-
-        public async Task<BookDto> GetById(int id)
+        public void AddXRequestId(HttpContext context)
         {
-            _logger.LogInformation($"GET book with id: {id} action invoked");
+            var listToUpdate = (List<string>?)context.Items["X-Request-ID"];
+            _requestId =  listToUpdate.Last();
+        }
+        public async Task<BookDto> GetById(int id, HttpContext context)
+        {
+            AddXRequestId(context);
+            _logger.LogDebug($"GET book with id: {id} action invoked");
             var book = await _context.Books.FindAsync(id);
 
             if(book is null) throw new NotFoundException("Book not found");
 
             var result = _mapper.Map<BookDto>(book); 
-            _logger.LogInformation($"GET book with id: {id} action executed");
+            _logger.LogDebug($"GET book with id: {id} action executed");
             return result;
         }
-        public BookDto GetByTitle(string title)
+        public BookDto GetByTitle(string title, HttpContext context)
         {
-            _logger.LogInformation($"GET book with title: \"{title}\" action invoked");
+            AddXRequestId(context);
+            _logger.LogDebug($"GET book with title: \"{title}\" action invoked");
             var book = _context.Books.FirstOrDefault(b => b.Title == title);
 
             if(book is null) throw new NotFoundException("Book not found");
 
             var result = _mapper.Map<BookDto>(book);
-            _logger.LogInformation($"GET book with title: \"{title}\" action executed");
+            _logger.LogDebug($"GET book with title: \"{title}\" action executed");
             return result;
         }
 
-        public async Task<IEnumerable<BookDto>> GetAll()
+        public async Task<IEnumerable<BookDto>> GetAll(HttpContext context)
         {
-            _logger.LogInformation($"GET all action invoked");
+            AddXRequestId(context);
+            _logger.LogDebug($"GET all action invoked");
 
             // var books = _context.Books.ToList();
             var books = await _context.Books.ToListAsync();
 
             var booksDtos = _mapper.Map<List<BookDto>>(books);
-            _logger.LogInformation($"GET all action executed");
+            _logger.LogDebug($"GET all action executed");
             return booksDtos;
         }
 
-        public async Task<int> Create(CreateBookDto dto)
+        public async Task<int> Create(CreateBookDto dto, HttpContext context)
         {
-            _logger.LogInformation($"Book {dto.Title} CREATE action invoked");
+            AddXRequestId(context);
+            _logger.LogDebug($"Book {dto.Title} CREATE action invoked");
             var book = _mapper.Map<Book>(dto);
             _context.Books.Add(book);
             await _context.SaveChangesAsync();
-            _logger.LogInformation($"Book {dto.Title} CREATE action executed");
+            _logger.LogDebug($"Book {dto.Title} CREATE action executed");
             return book.Id;
         }
 
-        public async Task<bool> Delete(int id)
+        public async Task<bool> Delete(int id, HttpContext context)
         {
-            _logger.LogInformation($"Book with id: {id} DELETE action invoked");
+            AddXRequestId(context);
+            _logger.LogDebug($"Book with id: {id} DELETE action invoked");
             var book = _context.Books.FirstOrDefault(b => b.Id == id);
             if(book is null) throw new NotFoundException("Book not found");
 
             HttpResponseMessage response;
             try
             {
+                if (_httpClient.DefaultRequestHeaders.Contains("X-Request-ID")) _httpClient.DefaultRequestHeaders.Remove("X-Request-ID");
+                _httpClient.DefaultRequestHeaders.Add("X-Request-ID", _requestId);
                 response = await _httpClient.GetAsync($"{_url}{book.Id}");
             }
             catch
@@ -101,15 +112,16 @@ namespace BooksLibrary.Services
             {
                 _context.Books.Remove(book);
                 _context.SaveChanges();
-                _logger.LogInformation($"Book with id: {id} DELETE action executed");
+                _logger.LogDebug($"Book with id: {id} DELETE action executed");
                 return true;
             }
             throw new BadHttpRequestException("Book is rented");
         }
 
-        public async Task Update(int id, UpdateBookDto dto)
+        public async Task Update(int id, UpdateBookDto dto, HttpContext context)
         {
-            _logger.LogInformation($"Book with id: {id} UPDATE action invoked");
+            AddXRequestId(context);
+            _logger.LogDebug($"Book with id: {id} UPDATE action invoked");
             var book = _context.Books.FirstOrDefault(b => b.Id == id);
 
             if(book is null) throw new NotFoundException("Book not found");
@@ -118,7 +130,7 @@ namespace BooksLibrary.Services
             if(dto.Releasedate != DateTimeOffset.Parse("0001-01-01T00:00:00+00:00")) book.Releasedate = dto.Releasedate;
 
             await _context.SaveChangesAsync();
-            _logger.LogInformation($"Book with id: {id} UPDATE action executed");
+            _logger.LogDebug($"Book with id: {id} UPDATE action executed");
         }
     }
 }

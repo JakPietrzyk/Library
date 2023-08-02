@@ -7,6 +7,7 @@ namespace HistoryRental.Clients
     public interface IBooksClient
     {
         Task<Book> GetBook(int id);
+        public void SetXRequestId(string requestId);
     }
     public class BooksClient: IBooksClient
     {
@@ -19,16 +20,16 @@ namespace HistoryRental.Clients
         {
             _client = client;            
         }
-
+        public void SetXRequestId(string requestId)
+        {
+            if (_client.DefaultRequestHeaders.Contains("X-Request-ID")) _client.DefaultRequestHeaders.Remove("X-Request-ID");
+            _client.DefaultRequestHeaders.Add("X-Request-ID", requestId);
+        }
         public async Task<Book> GetBook(int id)
         {
             HttpResponseMessage response = new();
             try
             {
-                if(_client.DefaultRequestHeaders.Contains("X-Request-ID")) _client.DefaultRequestHeaders.Remove("X-Request-ID");
-                string requestId = Guid.NewGuid().ToString();
-                _client.DefaultRequestHeaders.Add("X-Request-ID", requestId);
-                
                 response = await _client.GetAsync($"{_url}/{id}");
             }
             catch

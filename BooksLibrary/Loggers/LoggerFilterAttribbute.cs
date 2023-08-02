@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Rental.Middleware
+namespace BooksLibrary.Loggers
 {
     public class LoggerFilterAttribbute: ActionFilterAttribute
     {
@@ -22,14 +22,16 @@ namespace Rental.Middleware
             }
             if(context.HttpContext.Request.Headers.TryGetValue("X-Request-ID", out var requestId))
             {
-                var listToUpdate = (List<string>)context.HttpContext.Items["X-Request-ID"];
+                var listToUpdate = (List<string>?)context.HttpContext.Items["X-Request-ID"];
                 listToUpdate.Add(requestId);
-                // context.HttpContext.Items.Add("X-Request-ID", );
-                _logger.LogInformation("Request started: {context.HttpContext.Request.Method} {context.HttpContext.Request.Path}, Request ID: {requestId}",context.HttpContext.Request.Method,context.HttpContext.Request.Path,requestId.ToString() );
+                _logger.LogInformation("Request {status}: {context.HttpContext.Request.Method} {context.HttpContext.Request.Path}, Request ID: {requestId}","started",context.HttpContext.Request.Method,context.HttpContext.Request.Path,requestId.ToString() );
             }
             else
             {
-                 _logger.LogInformation($"Request started: {context.HttpContext.Request.Method} {context.HttpContext.Request.Path}, Request ID: Null");
+                string generetedRequestId = Guid.NewGuid().ToString();
+                var listToUpdate = (List<string>?)context.HttpContext.Items["X-Request-ID"];
+                listToUpdate.Add(generetedRequestId);
+                _logger.LogInformation("Request {status}: {context.HttpContext.Request.Method} {context.HttpContext.Request.Path}, Request ID: {requestId}","started",context.HttpContext.Request.Method,context.HttpContext.Request.Path,generetedRequestId.ToString());
             }
            
         }
@@ -46,15 +48,14 @@ namespace Rental.Middleware
             }
             if(context.HttpContext.Request.Headers.TryGetValue("X-Request-ID", out var requestId))
             {
-                // var listToUpdate = (List<string>)context.HttpContext.Items["X-Request-ID"];
-                // listToUpdate.Add(requestId);
-                // context.HttpContext.Items.Add("X-Request-ID", );
-                _logger.LogInformation("Request finished: {context.HttpContext.Request.Method} {context.HttpContext.Request.Path}, Request ID: {requestId}, Response: {response}, Duration: {_stopwatch.ElapsedMilliseconds} ms",context.HttpContext.Request.Method,context.HttpContext.Request.Path,requestId.ToString(),response,_stopwatch.ElapsedMilliseconds );
-                // _logger.LogInformation("MA DZIALAC {requestid}",requestId);
+                _logger.LogInformation("Request {status}: {context.HttpContext.Request.Method} {context.HttpContext.Request.Path}, Request ID: {requestId}, Response: {response}, Duration: {_stopwatch.ElapsedMilliseconds} ms","finished",context.HttpContext.Request.Method,context.HttpContext.Request.Path,requestId.ToString(),response,_stopwatch.ElapsedMilliseconds );
             }
             else
             {
-                _logger.LogInformation($"Request finished: {context.HttpContext.Request.Method} {context.HttpContext.Request.Path}, Request ID: Null, Response: {response}, Duration: {_stopwatch.ElapsedMilliseconds} ms");
+                
+                var listToUpdate = (List<string>?)context.HttpContext.Items["X-Request-ID"];
+                string generetedRequestId = listToUpdate.Last();
+                _logger.LogInformation("Request {status}: {context.HttpContext.Request.Method} {context.HttpContext.Request.Path}, Request ID: {requestId}, Response: {response}, Duration: {_stopwatch.ElapsedMilliseconds} ms","finished",context.HttpContext.Request.Method,context.HttpContext.Request.Path,generetedRequestId.ToString(),response,_stopwatch.ElapsedMilliseconds );
             }
             
 

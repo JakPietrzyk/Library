@@ -20,9 +20,9 @@ namespace Rental.Middleware
             var time = _stopWatch.ElapsedMilliseconds;
             if(time / 1000 > 4)
             {
-                var message = $"Request [{context.Request.Method} at {context.Request.Path} took {time} ms]";
+                var message = $"Request [{context.Request.Method} at {context.Request.Path} took {time} ms!]";
 
-                _logger.LogInformation(message);
+                _logger.LogWarning(message);
             }
         }
     }

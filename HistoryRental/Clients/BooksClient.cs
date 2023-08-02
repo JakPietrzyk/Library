@@ -25,6 +25,10 @@ namespace HistoryRental.Clients
             HttpResponseMessage response = new();
             try
             {
+                if(_client.DefaultRequestHeaders.Contains("X-Request-ID")) _client.DefaultRequestHeaders.Remove("X-Request-ID");
+                string requestId = Guid.NewGuid().ToString();
+                _client.DefaultRequestHeaders.Add("X-Request-ID", requestId);
+                
                 response = await _client.GetAsync($"{_url}/{id}");
             }
             catch

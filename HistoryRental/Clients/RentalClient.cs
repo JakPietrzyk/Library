@@ -45,11 +45,8 @@ namespace HistoryRental.Clients
                     return result;
                 }
             }
-            else
-            {
-                throw new NotFoundException("Customer not found");
-            }
-            return null;
+            throw new NotFoundException("Customer not found");
+            
            
         }
     }

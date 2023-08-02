@@ -8,6 +8,8 @@ using Confluent.Kafka;
 using Newtonsoft.Json;
 using Rental.Kafka;
 using Rental.Clients;
+using Newtonsoft.Json.Serialization;
+using System.Reflection;
 
 namespace Rental.Services
 {
@@ -23,7 +25,20 @@ namespace Rental.Services
         Task Update(int customerId, Book book);
         Task DeleteRent(int id);
     }
+    public class IgnoreReturnedDateContractResolver : DefaultContractResolver
+    {
+        protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
+        {
+            var property = base.CreateProperty(member, memberSerialization);
 
+            if (property.PropertyName == "ReturnDate")
+            {
+                property.ShouldSerialize = instance => false;
+            }
+
+            return property;
+        }
+    }
     public class RentalService: IRentalService
     {
         private readonly IMapper _mapper;
@@ -133,8 +148,23 @@ namespace Rental.Services
             var customerToAdd = _mapper.Map<Customer>(dto);
             customerToAdd.Rents.Add(rent);
             
+            
+
             var id = await Create(customerToAdd);
             _logger.LogInformation($"CREATE Customer {dto.Surname} with rented book with id: {book.Id} invoked");
+            var addToKafka = _mapper.Map<CustomerKafka>(rent);
+            addToKafka.CusotmerId = rent.CustomerId;
+            addToKafka.RentId = rent.Id;
+            // addToKafka.ReturnDate = DateTime.Now;
+            
+            var settingsJson = new JsonSerializerSettings
+            {
+                ContractResolver = new IgnoreReturnedDateContractResolver(),
+                Formatting = Formatting.Indented
+            };
+
+            string jsonString = JsonConvert.SerializeObject(addToKafka, settingsJson);
+            SendMessageToKafka(jsonString);
             return id;
         }
         public async Task Delete(int id)

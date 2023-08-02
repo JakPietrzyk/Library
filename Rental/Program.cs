@@ -3,6 +3,7 @@ using Rental.Services;
 using Rental.Clients;
 using Rental.Mappers;
 using Rental.Middleware;
+using Rental.Loggers;
 using NLog.Web;
 using NLog;
 using NLog.Config;
@@ -31,29 +32,7 @@ builder.Logging.ClearProviders();
 builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Information);
 
 // NLog Configuration
-var config = new LoggingConfiguration();
-var jsonFileTarget = new FileTarget
-{
-    Name = "jsonFile",
-    FileName = "C:/Users/Jakub/Documents/C#/1 task/Rental/Logs/${shortdate}_log-file.json",
-};
-var jsonLayout = new JsonLayout
-{
-    // IncludeEventProperties = true,
-    Attributes =
-    {
-        new JsonAttribute("X-Request-ID", "${event-properties:requestId}"),
-        new JsonAttribute("time", "${longdate}"),
-        new JsonAttribute("level", "${level:upperCase=true}"),
-        new JsonAttribute("message", "${message}"),
-        
-    }
-};
-var rule = new LoggingRule("Rental.*", NLog.LogLevel.Info, jsonFileTarget);
-config.LoggingRules.Add(rule);
-jsonFileTarget.Layout = jsonLayout;
-
-LogManager.Configuration = config;
+NLogJsonConfiguration.Configure();
 
 var logger = LogManager.GetCurrentClassLogger();
 

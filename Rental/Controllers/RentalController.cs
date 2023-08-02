@@ -4,7 +4,7 @@ using Rental.Dtos;
 using Rental.Clients;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Rental.Middleware;
+using Rental.Loggers;
 
 namespace Rental.Controllers
 {

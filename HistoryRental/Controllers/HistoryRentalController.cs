@@ -3,7 +3,7 @@ using HistoryRental.Services;
 using HistoryRental.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using HistoryRental.Middleware;
+using HistoryRental.Loggers;
 
 namespace HistoryRental.Controllers
 {

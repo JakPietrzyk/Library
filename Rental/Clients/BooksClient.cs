@@ -26,6 +26,9 @@ namespace Rental.Clients
             HttpResponseMessage response = new();
             try
             {
+                string requestId = Guid.NewGuid().ToString();
+                _client.DefaultRequestHeaders.Add("X-Request-ID", requestId);
+
                 response = await _client.GetAsync($"{_url}/{id}");
             }
             catch

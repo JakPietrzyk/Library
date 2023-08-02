@@ -5,8 +5,7 @@ using BooksLibrary.Middleware;
 using Microsoft.EntityFrameworkCore;
 using NLog.Web;
 using NLog;
-
-
+using BooksLibrary.Loggers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,12 +25,12 @@ builder.Services.AddScoped<LoggerFilterAttribbute>();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
 
-builder.Services.AddMvc(o => o.Filters.Add<LoggerFilterAttribbute>());
-
 builder.Configuration.GetConnectionString ("DefaultConnection");
 
 builder.Logging.ClearProviders();
-builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Information);
+
+NLogJsonConfiguration.Configure();
 builder.Host.UseNLog();
 
 var app = builder.Build();

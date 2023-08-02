@@ -5,6 +5,7 @@ using HistoryRental.Middleware;
 using NLog.Web;
 using Confluent.Kafka;
 using HistoryRental.Clients;
+using HistoryRental.Loggers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +30,6 @@ builder.Services.AddAutoMapper(typeof(HistoryRentalMappingProfile).Assembly);
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
 builder.Services.AddScoped<RequestTimeMiddleware>();
 builder.Services.AddScoped<LoggerFilterAttribbute>();
-builder.Services.AddMvc(o => o.Filters.Add<LoggerFilterAttribbute>());
 
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient<BooksClient>();
@@ -37,7 +37,10 @@ builder.Services.AddHttpClient<RentalClient>();
 builder.Services.AddHostedService<KafkaMessageService>();
 
 builder.Logging.ClearProviders();
-builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Information);
+
+NLogJsonConfiguration.Configure();
+
 builder.Host.UseNLog();
 
 var app = builder.Build();

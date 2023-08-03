@@ -8,6 +8,7 @@ using Confluent.Kafka;
 using Newtonsoft.Json;
 using MongoDB.Driver;
 using Microsoft.Extensions.Options;
+using HistoryRental.Settings;
 
 namespace HistoryRental.Services
 {
@@ -25,12 +26,19 @@ namespace HistoryRental.Services
         private readonly IRentalClient _rentalClient;
         private readonly IMapper _mapper; 
         private readonly ILogger<HistoryRentalService> _logger;
+        // private readonly IMongoClient _mongoClient;
         public HistoryRentalService(IOptions<HistoryRentalDatabaseSettings> historyRentalDatabaseSettings, IBooksClient booksClient, IRentalClient rentalClient, IMapper mapper, ILogger<HistoryRentalService> logger)
         {
-            var mongoConnectionString = "mongodb://localhost:27017";
-            var mongoClient = new MongoClient(mongoConnectionString);
-            var database = mongoClient.GetDatabase("RentalHistory");
-            _rentalCollection = database.GetCollection<MongoDbRental>("RentalHistory");
+            // _mongoClient = mongoClient;
+            var mongoClient = new MongoClient(
+            historyRentalDatabaseSettings.Value.ConnectionString);
+
+            var mongoDatabase = mongoClient.GetDatabase(
+                historyRentalDatabaseSettings.Value.DatabaseName);
+
+            _rentalCollection = mongoDatabase.GetCollection<MongoDbRental>(
+                historyRentalDatabaseSettings.Value.RentalCollectionName);
+
             _booksClient = booksClient;
             _rentalClient = rentalClient;
             _mapper = mapper;

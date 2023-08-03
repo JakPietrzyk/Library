@@ -6,6 +6,7 @@ using NLog.Web;
 using Confluent.Kafka;
 using HistoryRental.Clients;
 using HistoryRental.Loggers;
+using HistoryRental.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -14,16 +14,52 @@ using Moq.Protected;
 using Xunit;
 using MongoDB.Driver;
 using Microsoft.Extensions.Options;
+using HistoryRental.Settings;
+using MongoDB.Bson;
 
-namespace Rental{
+namespace Rental
+{
+    // public class MongoDbServiceUnitTest
+    // {
+    //     private Mock <IMongoClient> _mongoClient;
+    //     private Mock <IMongoDatabase> _mongodb;
+    //     private Mock <IMongoCollection<MongoDbRental>> _dataCollection;
+    //     private List <MongoDbRental> _dataList;
+    //     private HistoryRentalDatabaseSettings _historyRentalDatabaseSettings;
+    //     private readonly Fixture _fixture;
+    //     public MongoDbServiceUnitTest()
+    //     {
+
+
+    //         _mongoClient = new Mock<IMongoClient>();
+    //         _dataCollection = new Mock<IMongoCollection<MongoDbRental>>();
+    //         _mongodb = new Mock<IMongoDatabase>();
+
+    //         _dataList = _fixture.CreateMany<MongoDbRental>(7).ToList();
+    //     }
+    //     private void InitializeMongoDb() {
+    //         _mongodb.Setup(x => x.GetCollection < MongoDbRental > (_historyRentalDatabaseSettings.RentalCollectionName,
+    //             default)).Returns(_dataCollection.Object);
+    //         _mongoClient.Setup(x => x.GetDatabase(It.IsAny < string > (),
+    //             default)).Returns(_mongodb.Object);
+    //     }
+    // }
+
     public class Testclass
     {
+        private Mock <IMongoClient> _mongoClient;
+        private Mock <IMongoDatabase> _mongodb;
+        private Mock <IMongoCollection<MongoDbRental>> _dataCollection;
+        private List <MongoDbRental> _dataList;
+        private HistoryRentalDatabaseSettings _historyRentalDatabaseSettings;
         private readonly Fixture _fixture;
+        private readonly IConfigurationRoot _configuration;
         private RentalController? _controller; 
         private Mock<IHistoryRentalService> _libraryService;
         private Mock<IBooksClient> _booksClientMocked;
         private Mock<IRentalClient> _rentalClientMocked;
         private Mock<ILogger<HistoryRentalService>> _loggerMocked;
+        private Mock<IMapper> _mapper;
         public Testclass()
         {
             _fixture = new Fixture();
@@ -32,6 +68,45 @@ namespace Rental{
             _booksClientMocked = new Mock<IBooksClient>();
             _rentalClientMocked = new Mock<IRentalClient>();
             _loggerMocked = new Mock<ILogger<HistoryRentalService>>();
+            _mongoClient = new Mock<IMongoClient>();
+            _dataCollection = new Mock<IMongoCollection<MongoDbRental>>();
+            _mongodb = new Mock<IMongoDatabase>();
+            _mapper = new Mock<IMapper>();
+            _dataList = _fixture.CreateMany<MongoDbRental>(7).ToList();
+            _historyRentalDatabaseSettings = new HistoryRentalDatabaseSettings();
+
+            var configurationBuilder = new ConfigurationBuilder()
+                .SetBasePath(AppContext.BaseDirectory) // Set the base path to the test project's output directory
+                .AddJsonFile("C:/Users/Jakub/Documents/C#/1 task/HistoryRental/appsettings.json", optional: true, reloadOnChange: true); // Load appsettings.json from the "Configs" folder
+
+            _configuration = configurationBuilder.Build();
+        }
+        private void InitializeMongoDb() {
+            _mongodb.Setup(x => x.GetCollection < MongoDbRental > (_historyRentalDatabaseSettings.RentalCollectionName,
+                default)).Returns(_dataCollection.Object);
+            _mongoClient.Setup(x => x.GetDatabase(It.IsAny < string > (),
+                default)).Returns(_mongodb.Object);
+
+        }
+        private void InitializeMongoProductCollection() 
+        {
+            ClearDatabase();
+            this.InitializeMongoDb();
+  
+        }
+        private void ClearDatabase()
+        {
+            var connectionString = _configuration["HistoryDatabaseTesting:ConnectionString"];
+            var client = new MongoClient(connectionString);
+            var databaseName = _configuration["HistoryDatabaseTesting:DatabaseName"];
+            var collectionName = _configuration["HistoryDatabaseTesting:RentalCollectionName"];
+
+            // Get the database and the collection
+            var database = client.GetDatabase(databaseName);
+            var collection = database.GetCollection<BsonDocument>(collectionName);
+
+            // Delete all documents from the collection
+            collection.DeleteMany(new BsonDocument());
         }
         [Fact]
         public async Task GetAll_ReturnsOK()
@@ -58,9 +133,6 @@ namespace Rental{
                 mapperMock.Object,
                 _loggerMocked.Object
             );
-
-            // historyRentalService.Setup(c => c.AddXRequestId(It.IsAny<HttpContext>()));
-
             _controller = new RentalController(_libraryService.Object);
 
             var result = await _controller.GetAll(customerId,n);
@@ -72,57 +144,64 @@ namespace Rental{
          [Fact]
         public async Task GetAll_Should_Return_CustomerDto()
         {
-            // Arrange
             int customerId = 1;
             int n = 5;
 
-            // Mock the dependencies
             var rentalClientMock = new Mock<IRentalClient>();
             rentalClientMock.Setup(c => c.GetCustomer(customerId))
                 .ReturnsAsync(new CustomerDto { Name = "John", Surname = "Doe" });
-
-            // var rentalCollectionMock = new Mock<IOptions<MongoDbRental>>();
-            // rentalCollectionMock.Setup(c => c.FindAsync(
-            //     It.IsAny<FilterDefinition<MongoDbRental>>(),
-            //     It.IsAny<FindOptions<MongoDbRental, MongoDbRental>>(),
-            //     default // Provide a default CancellationToken
-            // ))
-            // .Returns(Task.FromResult((IAsyncCursor<MongoDbRental>)new List<MongoDbRental>
-            // {
-            //     new MongoDbRental { cusotmerId = customerId, returnDate = new DateTime(2023, 8, 10) },
-            //     new MongoDbRental { cusotmerId = customerId, returnDate = new DateTime(2023, 8, 12) },
-            //     new MongoDbRental { cusotmerId = customerId, returnDate = new DateTime(2023, 8, 15) },
-            //     new MongoDbRental { cusotmerId = customerId, returnDate = new DateTime(2023, 8, 20) },
-            //     new MongoDbRental { cusotmerId = customerId, returnDate = new DateTime(2023, 8, 25) },
-            // }));
             var optionsMongo = new Mock<IOptions<HistoryRentalDatabaseSettings>>();
-
+            optionsMongo.Setup(x => x.Value).Returns(new HistoryRentalDatabaseSettings
+            {
+                ConnectionString = "mongodb://localhost:27017",
+                DatabaseName = "RentalHistoryTesting",
+                RentalCollectionName = "RentalHistoryTesting" 
+            });
             var booksClientMock = new Mock<IBooksClient>();
             booksClientMock.Setup(c => c.GetBook(It.IsAny<int>()))
                 .Returns(Task.FromResult(new Book { Title = "Sample Book", Author = "John Smith" }));
 
             var mapperMock = new Mock<IMapper>();
 
-            // Create an instance of the HistoryRentalService with the mocked dependencies
             var historyRentalService = new HistoryRentalService(
                 optionsMongo.Object,
                 booksClientMock.Object,
                 rentalClientMock.Object,
                 mapperMock.Object,
                 _loggerMocked.Object
+                // _mongoClient.Object
             );
 
-            // Act
             var result = await historyRentalService.GetAll(customerId, n);
 
-            // Assert
-            var okResult = Assert.IsType<OkResult>(result);
-            Assert.Equal(200, okResult.StatusCode);
-
-            // Assert.NotNull(result);
-            // Assert.Equal("John", result.Name);
-            // Assert.Equal("Doe", result.Surname);
-            // Assert.Equal(n, result.Rents.Count);
+            Assert.NotNull(result);
+            Assert.Equal("John", result.Name);
+            Assert.Equal("Doe", result.Surname);
+        }
+        [Fact]
+        public async Task GetAll_Should_Return_5_Rents()
+        {
+            var cusotmerId = 1;
+            InitializeMongoProductCollection();
+            var optionsMongo = new Mock<IOptions<HistoryRentalDatabaseSettings>>();
+            optionsMongo.Setup(x => x.Value).Returns(new HistoryRentalDatabaseSettings
+            {
+                ConnectionString = _configuration["HistoryDatabaseTesting:ConnectionString"],
+                DatabaseName = _configuration["HistoryDatabaseTesting:DatabaseName"],
+                RentalCollectionName = _configuration["HistoryDatabaseTesting:RentalCollectionName"]
+            });
+            _rentalClientMocked.Setup(c => c.GetCustomer(cusotmerId)).Returns(Task.FromResult(new CustomerDto { Name = "John", Surname = "Doe" }));
+            var mongoDBService = new HistoryRentalService(optionsMongo.Object,_booksClientMocked.Object,_rentalClientMocked.Object,_mapper.Object,_loggerMocked.Object);
+            var listToAdd = _fixture.CreateMany<MongoDbRental>(7).ToList();
+            foreach(var rent in listToAdd)
+            {
+                rent.Id = ObjectId.GenerateNewId().ToString();
+                rent.cusotmerId = cusotmerId;
+                await mongoDBService.Create(rent);
+            }
+            var response = await mongoDBService.GetAll(cusotmerId,5);
+            Assert.Equal(response.Rents.Count, 5);
+            
         }
     }
 }

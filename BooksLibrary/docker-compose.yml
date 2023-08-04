@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  webapi:
+    build:
+      context: .
+      dockerfile: ./Dockerfile # Path to your Web API Dockerfile
+    ports:
+      - "8080:80" # Map host port 8080 to container port 80
+    depends_on:
+      - db
+    environment:
+      CONNECTION_STRING: Host=db;Port=5432;Database=MyLibrary;Username=postgres;Password=@lampa12
+
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: MyLibrary
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: '@lampa12'
+
+
+
+
+# services:
+#   web:
+#     build: .
+#     ports:
+#       - "5011:5011"
+#     environment:
+#       DefaultConnection: "Include Error Detail=true;Host=localhost;Database=MyLibrary;Username=postgress;Password=@lampa12;"
+#   postgres:
+#     image: "postgres:9.6"
+#     ports:
+#       - 5432:5432
+#     environment:
+#       - POSTGRES_USER=postgres
+#       - POSTGRES_PASSWORD=postgres
+#     volumes:
+#       - lib:/var/lib/pgsql/data
+
+# volumes:
+#   lib:

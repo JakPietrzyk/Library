@@ -21,7 +21,7 @@ public partial class MyLibraryContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if(!optionsBuilder.IsConfigured)
-            optionsBuilder.UseNpgsql("Include Error Detail=true;Host=localhost;Database=MyLibrary;Username=postgres;Password=@lampa12");
+            optionsBuilder.UseNpgsql("Include Error Detail=true;Host=db;Port=5432;Database=MyLibrary;Username=postgres;Password=@lampa12");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

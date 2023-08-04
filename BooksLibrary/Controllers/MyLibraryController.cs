@@ -19,6 +19,11 @@ namespace BooksLibrary.Controllers
         {
             _libraryService = libraryService;
         }
+        [HttpGet("test")]
+        public async Task<ActionResult<string>> Test()
+        {
+            return Ok("test");
+        }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BookDto>>> GetAll()
         {

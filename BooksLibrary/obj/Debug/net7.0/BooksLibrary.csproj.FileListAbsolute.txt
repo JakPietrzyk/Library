@@ -193,3 +193,5 @@ C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\runtimes\win-x8
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\runtimes\win-x86\native\zlib1.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\runtimes\win-x86\native\zstd.dll
 C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Logs\2023-08-02_log-file.json
+C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Logs\2023-08-03_log-file.json
+C:\Users\Jakub\Documents\C#\1 task\BooksLibrary\bin\Debug\net7.0\Logs\2023-08-04_log-file.json
